@@ -23,6 +23,7 @@ module.exports = {
     }
   ],
   build: {
+    publicPath: 'https://yjj5855.github.io/activity-lt/dist/',
     extend(config, { isDev, isClient }) {
       const configs = vuxLoader.merge(config, {
         options: {
