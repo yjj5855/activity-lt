@@ -44,16 +44,24 @@
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/home-2.jpg`" :offset="-100"/>
       <div style="position: absolute; left: 0;top: 0;width: 100%;height: 28%;" @click="playVideo('zbyrsp.mp4')"></div>
+
+      <div style="position: absolute; bottom: 3%;left: 13%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; bottom: 3%;left: 32%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; bottom: 3%;left: 51%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; bottom: 3%;left: 70%;width: 17%;height: 12%;"></div>
     </div>
 
     <!--3个视频-->
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-100"/>
-      <swiper :aspect-ratio="919/645" v-model="videoIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;">
-        <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;">
+      <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
+        <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;">
         </swiper-item>
       </swiper>
+      <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;top: 21%;" @click="videoIndex > 0 ? videoIndex-- : ''">
+      <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;top: 21%;" @click="videoIndex < 1 ? videoIndex++ : ''">
+
 
       <div style="position: absolute; left: 0;bottom: 0;width: 100%;height: 24%;" @click="playVideo('hxsp.mp4')"></div>
     </div>
@@ -132,7 +140,14 @@
         bannerIndex: 0,
 
         videoList: [
-
+          'static/home/video-kunao.png',
+          'static/home/video-xizao.png'
+          // 'static/home/video-zhuomicang.png'
+        ],
+        videos: [
+          'video-kunao.mp4',
+          'video-xizao.mp4'
+          // 'video-zhuomicang.mp4'
         ],
         videoIndex: 0,
 
@@ -184,6 +199,12 @@
       miao = 22
     } else if (event.src.includes('hxsp')) {
       miao = 36
+    } else if (event.src.includes('video-kunao')) {
+      miao = 49
+    } else if (event.src.includes('video-xizao')) {
+      miao = 37
+    } else if (event.src.includes('video-zhuomicang')) {
+      miao = 21
     }
     if (event.currentTime >= miao) {
       $('#video').removeClass('show')
