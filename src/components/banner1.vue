@@ -8,7 +8,7 @@
     <div style="position: relative;" >
       <x-img class="ximg-demo" :src="`static/b1-5.jpg`" :offset="-100"/>
       <div style="position: absolute;left: 0;right: 0;text-align: center;top: 57%;">
-        <img src="/static/btn-goumai.png" style="width: 45%;">
+        <img src="static/btn-goumai.png" style="width: 45%;">
       </div>
     </div>
   </div>
