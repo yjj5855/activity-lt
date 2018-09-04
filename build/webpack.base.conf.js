@@ -28,6 +28,9 @@ let webpackConfig = {
       '@': resolve('src'),
     }
   },
+  externals: {
+    jquery: 'window.$'
+  },
   module: {
     rules: [
       ...(config.dev.useEslint? [{
