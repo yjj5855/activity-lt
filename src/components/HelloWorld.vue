@@ -25,12 +25,12 @@
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`"/>
       <swiper :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;margin-top: -36%;"/>
+          <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
-            <img src="static/home/btn-liaojie.png" style="width: 40%;">
+            <img src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
           </div>
           <div style="position: absolute;left: 0;right: 0;bottom: 11%;text-align: center;" v-else>
-            <img src="static/home/btn-shipin.png" style="width: 57%;">
+            <img src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
           </div>
         </swiper-item>
         <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
@@ -40,12 +40,21 @@
       <!--倒计时-->
       <div style="position: absolute;left: 0;right: 0;bottom: 4%;">
         <x-img src="static/home/daojishi.png" width="100%"/>
+
+        <clocker time="2018-10-01" style="position: absolute;display: block;bottom: 11%;left: 0;right: 0;font-size: 50px;">
+          <div style="position: relative;width: 100%;color: #fff;">
+            <span style="position: absolute;left: 8%;">%D</span>
+            <span style="position: absolute;left: 40%;">%H</span>
+            <span style="position: absolute;left: 70%;">%M</span>
+            &nbsp;
+          </div>
+        </clocker>
       </div>
     </div>
 
     <!--直播预热视频-->
     <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-2.jpg`" :offset="-100"/>
+      <x-img class="ximg-demo" :src="`static/home/home-2.jpg`" :offset="-400"/>
       <div style="position: absolute; left: 0;top: 0;width: 100%;height: 28%;" @click="playVideo('zbyrsp.mp4')"></div>
 
       <div style="position: absolute; bottom: 3%;left: 13%;width: 17%;height: 12%;"></div>
@@ -56,7 +65,7 @@
 
     <!--3个视频-->
     <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-100"/>
+      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-400"/>
       <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;"/>
@@ -72,7 +81,7 @@
 
     <!--宝宝banner-->
     <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-100"/>
+      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
 
       <x-img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;top: 6%;left: 3%;"/>
       <x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>
@@ -84,11 +93,11 @@
       <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 63%;" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
       <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 63%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
-    <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-100"/>
+    <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
 
 
     <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-100"/>
+      <x-img class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
       <div style="position: absolute;bottom: 15%;left: 0;right: 0;text-align: center;">
         <x-img class="dazhuanpan" src="static/home/dazhuanpan.jpg" style="width: 90%;"/>
 
@@ -100,7 +109,7 @@
       </div>
 
       <div style="position: absolute;left: 0;right: 0;bottom: 4%;text-align: center;">
-        <x-img src="static/home/btn-fanhui.png" style="width: 47%;" @click="scrollTop()"/>
+        <x-img src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
       </div>
     </div>
 
@@ -115,7 +124,7 @@
 
 <script>
   import $ from 'jquery'
-  import {TransferDom, XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem} from 'vux'
+  import {TransferDom, XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker} from 'vux'
 
   let isAndroid = 0
   let browser = {
@@ -135,7 +144,7 @@
       TransferDom
     },
     components: {
-      XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem
+      XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker
     },
     data () {
       return {
@@ -185,6 +194,13 @@
       }
     },
     methods: {
+      onBannerClick (index) {
+        if (index === 3) {
+
+        } else {
+          this.$router.push({name: `banner${index + 1}`})
+        }
+      },
       playVideo (mp4) {
         this.videoSrc = `static/home/${mp4}`
         this.$nextTick(() => {
