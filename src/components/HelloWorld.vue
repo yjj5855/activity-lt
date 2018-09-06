@@ -25,7 +25,7 @@
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`"/>
       <swiper :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;margin-top: -36%;">
+          <img :src="item" style="width: 100%;margin-top: -36%;"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
             <img src="static/home/btn-liaojie.png" style="width: 40%;">
           </div>
@@ -38,6 +38,9 @@
       </swiper>
 
       <!--倒计时-->
+      <div style="position: absolute;left: 0;right: 0;bottom: 4%;">
+        <x-img src="static/home/daojishi.png" width="100%"/>
+      </div>
     </div>
 
     <!--直播预热视频-->
@@ -56,11 +59,11 @@
       <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-100"/>
       <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
-          <img :src="item" style="width: 100%;">
+          <img :src="item" style="width: 100%;"/>
         </swiper-item>
       </swiper>
-      <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;top: 21%;" @click="videoIndex > 0 ? videoIndex-- : ''">
-      <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;top: 21%;" @click="videoIndex < 1 ? videoIndex++ : ''">
+      <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;top: 23%;" @click="videoIndex > 0 ? videoIndex-- : ''">
+      <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;top: 23%;" @click="videoIndex < 2 ? videoIndex++ : ''">
 
 
       <div style="position: absolute; left: 0;bottom: 0;width: 100%;height: 24%;" @click="playVideo('hxsp.mp4')"></div>
@@ -71,11 +74,11 @@
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-100"/>
 
-      <img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;top: 6%;left: 3%;">
-      <img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;">
+      <x-img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;top: 6%;left: 3%;"/>
+      <x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>
       <swiper :aspect-ratio="919/645" v-model="baobaoIndex" style="position: absolute;left: 0;top: 43%;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;">
+          <img :src="item" style="width: 100%;"/>
         </swiper-item>
       </swiper>
       <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 63%;" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
@@ -86,8 +89,18 @@
 
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-100"/>
+      <div style="position: absolute;bottom: 15%;left: 0;right: 0;text-align: center;">
+        <x-img class="dazhuanpan" src="static/home/dazhuanpan.jpg" style="width: 90%;"/>
+
+        <div style="position: absolute;width: 100%;bottom: 45%;">
+          <flexbox style="justify-content: center;">
+            <x-img class="dazhuanpan-go" src="static/home/dazhuanpan-go.jpg" style="width: 10%;"/>
+          </flexbox>
+        </div>
+      </div>
+
       <div style="position: absolute;left: 0;right: 0;bottom: 4%;text-align: center;">
-        <img src="static/home/btn-fanhui.png" style="width: 47%;" @click="scrollTop()">
+        <x-img src="static/home/btn-fanhui.png" style="width: 47%;" @click="scrollTop()"/>
       </div>
     </div>
 
@@ -141,13 +154,13 @@
 
         videoList: [
           'static/home/video-kunao.png',
-          'static/home/video-xizao.png'
-          // 'static/home/video-zhuomicang.png'
+          'static/home/video-xizao.png',
+          'static/home/video-zhuomicang.png'
         ],
         videos: [
           'video-kunao.mp4',
-          'video-xizao.mp4'
-          // 'video-zhuomicang.mp4'
+          'video-xizao.mp4',
+          'video-zhuomicang.mp4'
         ],
         videoIndex: 0,
 
