@@ -39,7 +39,7 @@
     </div>
 
     <!--倒计时-->
-    <div style="position: relative;">
+    <div style="position: relative;" v-if="$route.query.showClock">
       <x-img class="ximg-demo" :src="`static/home/home-2.jpg`"/>
 
       <div style="position: absolute;left: 0;right: 0;top: -8%;">
