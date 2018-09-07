@@ -21,11 +21,11 @@
     </div>
 
     <!--banner-->
-    <div style="position: relative;">
+    <div style="position: relative;overflow: hidden;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`"/>
       <swiper :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
+          <img :src="item" style="width: 100%;margin-top: -36%;"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
             <img src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
           </div>
@@ -36,12 +36,15 @@
         <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
         <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">
       </swiper>
+    </div>
 
-      <!--倒计时-->
-      <div style="position: absolute;left: 0;right: 0;bottom: 4%;">
+    <!--倒计时-->
+    <div style="position: relative;">
+      <x-img class="ximg-demo" :src="`static/home/home-2.jpg`"/>
+
+      <div style="position: absolute;left: 0;right: 0;top: -8%;">
         <x-img src="static/home/daojishi.png" width="100%"/>
-
-        <clocker time="2018-10-01" style="position: absolute;display: block;bottom: 11%;left: 0;right: 0;font-size: 50px;">
+        <clocker time="2018-10-01" style="position: absolute;display: block;top: 29%;left: 0;right: 0;font-size: 50px;">
           <div style="position: relative;width: 100%;color: #fff;">
             <span style="position: absolute;left: 8%;">%D</span>
             <span style="position: absolute;left: 40%;">%H</span>
@@ -50,56 +53,56 @@
           </div>
         </clocker>
       </div>
+      <div style="position: absolute; left: 0;bottom: 17%;width: 100%;height: 42%;" @click="playVideo('zbyrsp.mp4')"></div>
+
     </div>
 
-    <!--直播预热视频-->
-    <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-2.jpg`" :offset="-400"/>
-      <div style="position: absolute; left: 0;top: 0;width: 100%;height: 28%;" @click="playVideo('zbyrsp.mp4')"></div>
-
-      <div style="position: absolute; bottom: 3%;left: 13%;width: 17%;height: 12%;"></div>
-      <div style="position: absolute; bottom: 3%;left: 32%;width: 17%;height: 12%;"></div>
-      <div style="position: absolute; bottom: 3%;left: 51%;width: 17%;height: 12%;"></div>
-      <div style="position: absolute; bottom: 3%;left: 70%;width: 17%;height: 12%;"></div>
-    </div>
-
-    <!--3个视频-->
+    <!--4个商城-->
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-400"/>
-      <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
+      <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; top: 44%;left: 70%;width: 17%;height: 12%;"></div>
+
+      <!--3个视频-->
+      <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
       </swiper>
-      <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;top: 23%;" @click="videoIndex > 0 ? videoIndex-- : ''">
-      <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;top: 23%;" @click="videoIndex < 2 ? videoIndex++ : ''">
+      <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex-- : ''">
+      <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;bottom: 12%;" @click="videoIndex < 2 ? videoIndex++ : ''">
 
-
-      <div style="position: absolute; left: 0;bottom: 0;width: 100%;height: 24%;" @click="playVideo('hxsp.mp4')"></div>
     </div>
 
+    <!--花絮视频-->
+    <div style="position: relative;">
+      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
+      <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
+      <x-img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
+    </div>
 
     <!--宝宝banner-->
     <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
 
-      <x-img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;top: 6%;left: 3%;"/>
-      <x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>
-      <swiper :aspect-ratio="919/645" v-model="baobaoIndex" style="position: absolute;left: 0;top: 43%;right: 0;bottom: 0;" :show-dots="false">
+      <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
+      <swiper :aspect-ratio="919/645" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
       </swiper>
-      <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 63%;" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
-      <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 63%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
+      <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 45%;" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
+      <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
-    <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
+    <x-img class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
 
 
     <div style="position: relative;">
-      <x-img class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
-      <div style="position: absolute;bottom: 15%;left: 0;right: 0;text-align: center;">
-        <x-img class="dazhuanpan" src="static/home/dazhuanpan.jpg" style="width: 90%;"/>
+      <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="-400"/>
+      <div style="position: absolute;top: 22%;left: 0;right: 0;text-align: center;">
+        <x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 90%;"/>
 
         <div style="position: absolute;width: 100%;bottom: 45%;">
           <flexbox style="justify-content: center;">
@@ -108,7 +111,7 @@
         </div>
       </div>
 
-      <div style="position: absolute;left: 0;right: 0;bottom: 4%;text-align: center;">
+      <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;">
         <x-img src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
       </div>
     </div>
@@ -182,7 +185,11 @@
         ],
         baobaoIndex: 0,
 
-        videoSrc: ''
+        videoSrc: '',
+
+        bannerStyle: {
+          height: 'auto'
+        }
       }
     },
     mounted () {
@@ -191,6 +198,9 @@
         $('#video-1').attr({'controls': 'controls'})
       } else {
         $('body').addClass('animate')
+      }
+      if (new Date('2018-10-08').getTime() - new Date().getTime() > 0) {
+        // this.bannerStyle.height = '146vw'
       }
     },
     methods: {
