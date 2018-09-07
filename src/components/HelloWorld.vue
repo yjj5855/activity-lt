@@ -2,7 +2,7 @@
   <div>
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/topbar.png`"/>
-      <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = true"></div>
+      <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
       <div v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 20px 10px 20px 20px;width: 30%;">
         <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner1'})">
@@ -25,7 +25,7 @@
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`"/>
       <swiper :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;margin-top: -36%;"/>
+          <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
             <img src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
           </div>
@@ -101,7 +101,7 @@
 
     <div style="position: relative;">
       <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="-400"/>
-      <div style="position: absolute;top: 22%;left: 0;right: 0;text-align: center;">
+      <div style="position: absolute;top: 22%;left: 0;right: 0;text-align: center;overflow: hidden;">
         <x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 90%;"/>
 
         <div style="position: absolute;width: 100%;bottom: 45%;">
