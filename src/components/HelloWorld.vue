@@ -118,16 +118,21 @@
 
 
 
-    <section id="video">
-      <video :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1"></video>
-    </section>
+    <div v-transfer-dom>
+      <x-dialog v-model="showVideoBox" class="dialog-demo" id="video">
+        <video :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1"></video>
+        <div @click="showVideoBox=false">
+          <x-icon type="ios-close-outline" size="50" style="fill:#fff;margin-top: 20px;"></x-icon>
+        </div>
+      </x-dialog>
+    </div>
   </div>
 </template>
 
 
 <script>
   import $ from 'jquery'
-  import {TransferDom, XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker} from 'vux'
+  import {TransferDom, XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker, XDialog} from 'vux'
 
   let isAndroid = 0
   let browser = {
@@ -147,7 +152,7 @@
       TransferDom
     },
     components: {
-      XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker
+      XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker, XDialog
     },
     data () {
       return {
@@ -185,6 +190,7 @@
         ],
         baobaoIndex: 0,
 
+        showVideoBox: false,
         videoSrc: '',
 
         bannerStyle: {
@@ -215,7 +221,7 @@
         this.videoSrc = `static/home/${mp4}`
         this.$nextTick(() => {
           $('#video-1')[0].currentTime = 0.5
-          $('#video').addClass('show')
+          this.showVideoBox = true
           if (isAndroid === 1) {
             $('#video-1')[0].play()
           } else {
@@ -232,7 +238,6 @@
   }
 
   window.videoUpdate = function (event) {
-    console.log(event.src)
     let miao = 100
     if (event.src.includes('zbyrsp')) {
       miao = 22
@@ -246,7 +251,7 @@
       miao = 21
     }
     if (event.currentTime >= miao) {
-      $('#video').removeClass('show')
+      this.showVideoBox = false
     }
   }
 </script>
