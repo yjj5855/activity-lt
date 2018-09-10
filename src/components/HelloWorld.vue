@@ -224,8 +224,12 @@
       onBannerClick (index) {
         if (index === 3) {
 
-        } else {
-          this.$router.push({name: `banner${index + 1}`})
+        } else if (index === 0) {
+          this.$router.push({name: `banner1`})
+        } else if (index === 1) {
+          this.$router.push({name: `banner3`})
+        } else if (index === 2) {
+          this.$router.push({name: `banner2`})
         }
       },
       playVideo (mp4) {
