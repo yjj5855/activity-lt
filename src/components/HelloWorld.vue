@@ -4,18 +4,20 @@
       <x-img class="ximg-demo" :src="`static/home/topbar.png`"/>
       <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
-      <div v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 20px 10px 20px 20px;width: 30%;">
+      <div v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
         <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner1'})">
-          <flexbox-item style="font-size: 14px;">新款小老虎</flexbox-item>
-          <x-icon type="ios-arrow-right" size="20"></x-icon>
+          <flexbox-item style="font-size: 28px;">新款小老虎</flexbox-item>
+          <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
+        <br>
         <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner2'})">
-          <flexbox-item style="font-size: 14px;">BABY系列</flexbox-item>
-          <x-icon type="ios-arrow-right" size="20"></x-icon>
+          <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
+          <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
+        <br>
         <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner3'})">
-          <flexbox-item style="font-size: 14px;">KIDS系列</flexbox-item>
-          <x-icon type="ios-arrow-right" size="20"></x-icon>
+          <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
+          <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
       </div>
     </div>
