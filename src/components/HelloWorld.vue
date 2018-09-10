@@ -234,9 +234,9 @@
       },
       playVideo (mp4) {
         this.videoSrc = `static/home/${mp4}`
+        this.showVideoBox = true
         this.$nextTick(() => {
           $('#video-1')[0].currentTime = 0.5
-          this.showVideoBox = true
           if (isAndroid === 1) {
             $('#video-1')[0].play()
           } else {
