@@ -70,7 +70,7 @@
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 26%;text-align: center;">
-            <img src="/static/home/bofang.png" style="width: 100%;" />
+            <img src="static/home/bofang.png" style="width: 100%;" />
           </div>
         </swiper-item>
       </swiper>
