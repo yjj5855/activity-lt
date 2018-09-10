@@ -69,6 +69,9 @@
       <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;"/>
+          <div style="position: absolute;left: 0;right: 0;bottom: 26%;text-align: center;">
+            <img src="/static/home/bofang.png" style="width: 100%;" />
+          </div>
         </swiper-item>
       </swiper>
       <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex-- : ''">
@@ -117,12 +120,22 @@
     </div>
 
 
-
+    <!--视频-->
     <div v-transfer-dom>
-      <x-dialog v-model="showVideoBox" class="dialog-demo" id="video">
+      <x-dialog v-model="showVideoBox" class="dialog-demo video" id="video">
         <video :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1"></video>
-        <div @click="showVideoBox=false">
+        <div @click.stop="showVideoBox=false">
           <x-icon type="ios-close-outline" size="50" style="fill:#fff;margin-top: 20px;"></x-icon>
+        </div>
+      </x-dialog>
+    </div>
+
+    <!--一元购-->
+    <div v-transfer-dom>
+      <x-dialog v-model="showYiyuan" class="dialog-demo yiyuan" style="position: relative;">
+        <img src="static/home/yiyuan.png"/>
+        <div @click.stop="showYiyuan=false" style="position: absolute;right: 0;top: 0;">
+          <x-icon type="ios-close-outline" size="50" style="fill:#fff;"></x-icon>
         </div>
       </x-dialog>
     </div>
@@ -156,9 +169,7 @@
     },
     data () {
       return {
-        publicPath: 'https://yjj5855.github.io/activity-lt/dist/',
-        list: [
-        ],
+        showYiyuan: false,
 
         drawerVisibility: false,
         bannerList: [
@@ -208,6 +219,10 @@
       if (new Date('2018-10-08').getTime() - new Date().getTime() > 0) {
         // this.bannerStyle.height = '146vw'
       }
+
+      setTimeout(() => {
+        this.showYiyuan = true
+      }, 300)
     },
     methods: {
       onBannerClick (index) {
