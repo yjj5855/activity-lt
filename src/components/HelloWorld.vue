@@ -123,7 +123,9 @@
     <!--视频-->
     <div v-transfer-dom>
       <x-dialog v-model="showVideoBox" class="dialog-demo video" id="video">
-        <video :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1"></video>
+        <video controls="controls" :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1">
+          <source :src="videoSrc" type="video/mp4"/>
+        </video>
         <div @click.stop="showVideoBox=false">
           <x-icon type="ios-close-outline" size="50" style="fill:#fff;margin-top: 20px;"></x-icon>
         </div>
@@ -210,12 +212,6 @@
       }
     },
     mounted () {
-      if (browser.versions.android) {
-        isAndroid = 1
-        $('#video-1').attr({'controls': 'controls'})
-      } else {
-        $('body').addClass('animate')
-      }
       if (new Date('2018-10-08').getTime() - new Date().getTime() > 0) {
         // this.bannerStyle.height = '146vw'
       }
@@ -235,7 +231,7 @@
       playVideo (mp4) {
         this.videoSrc = `static/home/${mp4}`
         this.showVideoBox = true
-        this.$nextTick(() => {
+        setTimeout(() => {
           $('#video-1')[0].currentTime = 0.5
           if (isAndroid === 1) {
             $('#video-1')[0].play()
@@ -244,7 +240,7 @@
               $('#video-1')[0].play()
             }, 500)
           }
-        })
+        }, 300)
       },
       scrollTop () {
         $(window).scrollTop(0)
