@@ -8,7 +8,10 @@ import App from './App'
 import router from './router'
 import './assets/index.less'
 
+import {ToastPlugin} from 'vux'
+
 Vue.use(VueRouter)
+Vue.use(ToastPlugin)
 
 FastClick.attach(document.body)
 
@@ -19,3 +22,12 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app-box')
+
+window.is_wx = function () {
+  var ua = navigator.userAgent.toLowerCase()
+  if (ua.includes('MicroMessenger')) {
+    return true
+  } else {
+    return true
+  }
+}

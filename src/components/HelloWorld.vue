@@ -1,21 +1,21 @@
 <template>
   <div>
-    <div style="position: relative;">
+    <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;">
       <x-img class="ximg-demo" :src="`static/home/topbar.png`"/>
       <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
       <div v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
-        <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner1'})">
+        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(0)">
           <flexbox-item style="font-size: 28px;">新款小老虎</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
         <br>
-        <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner2'})">
+        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">
           <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
         <br>
-        <flexbox style="margin: 5px 0;" @click.native="$router.push({name: 'banner3'})">
+        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
           <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
@@ -23,9 +23,9 @@
     </div>
 
     <!--banner-->
-    <div style="position: relative;overflow: hidden;" :style="bannerStyle">
-      <x-img class="ximg-demo" :src="`static/home/home-1.jpg`"/>
-      <swiper :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
+    <div style="position: relative;overflow: hidden;margin-top: 16%;" :style="bannerStyle">
+      <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img"/>
+      <swiper v-if="firstVisibility" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
@@ -60,7 +60,7 @@
     </div>
 
     <!--4个商城-->
-    <div style="position: relative;">
+    <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-400"/>
       <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;"></div>
       <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;"></div>
@@ -82,14 +82,14 @@
     </div>
 
     <!--花絮视频-->
-    <div style="position: relative;">
+    <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
       <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
       <x-img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
     </div>
 
     <!--宝宝banner-->
-    <div style="position: relative;">
+    <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
@@ -101,10 +101,10 @@
       <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 45%;" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
       <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
-    <x-img class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
 
+    <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
 
-    <div style="position: relative;">
+    <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="-400"/>
       <div style="position: absolute;top: 22%;left: 0;right: 0;text-align: center;overflow: hidden;">
         <x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 90%;"/>
@@ -135,13 +135,15 @@
     </div>
 
     <!--一元购-->
+    <div style="position: fixed;right: 0;top: 10%;" v-if="firstVisibility">
+      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 200px;"/>
+    </div>
+
     <div v-transfer-dom>
-      <x-dialog v-model="showYiyuan" class="dialog-demo yiyuan" style="position: relative;">
-        <img src="static/home/yiyuan.png"/>
-        <div @click.stop="showYiyuan=false" style="position: absolute;right: 0;top: 0;">
-          <x-icon type="ios-close-outline" size="50" style="fill:#fff;"></x-icon>
-        </div>
-      </x-dialog>
+      <popup v-model="bannerPopupStatus" height="100%">
+        <component :is="banner"></component>
+        <x-icon type="ios-close-empty" size="60" style="position: fixed;right: 20px;top: 20px;background: #fff;border-radius: 10px;" @click.native="bannerPopupStatus=false"></x-icon>
+      </popup>
     </div>
   </div>
 </template>
@@ -169,11 +171,22 @@
       TransferDom
     },
     components: {
-      XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker, XDialog
+      banner1: require('./banner1').default,
+      banner2: require('./banner2').default,
+      banner3: require('./banner3').default,
+      XImg,
+      XHeader,
+      Swiper,
+      SwiperItem,
+      Popup,
+      Flexbox,
+      FlexboxItem,
+      Clocker,
+      XDialog
     },
     data () {
       return {
-        showYiyuan: false,
+        firstVisibility: false,
 
         drawerVisibility: false,
         bannerList: [
@@ -210,7 +223,10 @@
 
         bannerStyle: {
           height: 'auto'
-        }
+        },
+
+        bannerPopupStatus: false,
+        banner: ''
       }
     },
     mounted () {
@@ -219,7 +235,7 @@
       }
 
       setTimeout(() => {
-        this.showYiyuan = true
+        this.firstVisibility = true
       }, 300)
     },
     methods: {
@@ -227,11 +243,20 @@
         if (index === 3) {
 
         } else if (index === 0) {
-          this.$router.push({name: `banner1`})
+          this.banner = 'banner1'
+          this.$nextTick(() => {
+            this.bannerPopupStatus = true
+          })
         } else if (index === 1) {
-          this.$router.push({name: `banner3`})
+          this.banner = 'banner3'
+          this.$nextTick(() => {
+            this.bannerPopupStatus = true
+          })
         } else if (index === 2) {
-          this.$router.push({name: `banner2`})
+          this.banner = 'banner2'
+          this.$nextTick(() => {
+            this.bannerPopupStatus = true
+          })
         }
       },
       playVideo (mp4) {

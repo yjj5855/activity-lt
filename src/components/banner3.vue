@@ -1,11 +1,11 @@
 <template>
   <div>
-    <x-img class="ximg-demo" src="static/b3/b3-1.jpg"/>
-    <x-img class="ximg-demo" src="static/b3/b3-2.jpg" :offset="-200"/>
-    <x-img class="ximg-demo" src="static/b3/b3-3.jpg" :offset="-200"/>
+    <img class="ximg-demo" src="static/b3/b3-1.jpg"/>
+    <img class="ximg-demo" src="static/b3/b3-2.jpg" :offset="-200"/>
+    <img class="ximg-demo" src="static/b3/b3-3.jpg" :offset="-200"/>
 
     <div style="position: relative;" >
-      <x-img class="ximg-demo" src="static/b3/b3-4.jpg" :offset="-200"/>
+      <img class="ximg-demo" src="static/b3/b3-4.jpg" :offset="-200"/>
       <div style="position: absolute;left: 0;right: 0;text-align: center;bottom: 18%;">
         <img src="static/btn-goumai.png" style="width: 45%;" @click="onBtnClick">
       </div>
@@ -27,7 +27,13 @@
     },
     methods: {
       onBtnClick () {
-        window.location.href = this.url
+        if (window.is_wx()) {
+          let a = new window.ClipboardJS('.img-btn')
+          console.log(a)
+          this.$vux.toast.text('链接已复制，请在其他浏览器中打开')
+        } else {
+          window.location.href = this.url
+        }
       }
     }
   }
