@@ -135,8 +135,8 @@
     </div>
 
     <!--一元购-->
-    <div style="position: fixed;right: 0;top: 10%;" v-if="firstVisibility">
-      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 200px;"/>
+    <div style="position: fixed;right: 0;top: 10%;" v-if="firstVisibility" >
+      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 200px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
     </div>
 
     <div v-transfer-dom>
@@ -226,7 +226,9 @@
         },
 
         bannerPopupStatus: false,
-        banner: ''
+        banner: '',
+
+        yiyuanUrl: 'https://h5.m.taobao.com/awp/core/detail.htm?id=576977040134'
       }
     },
     mounted () {
@@ -275,6 +277,15 @@
       },
       scrollTop () {
         $(window).scrollTop(0)
+      },
+      goYiyuan () {
+        if (window.is_wx()) {
+          let a = new window.ClipboardJS('.yiyuan')
+          console.log(a)
+          this.$vux.toast.text(`链接已复制，请在其他浏览器中打开`)
+        } else {
+          window.location.href = this.yiyuanUrl
+        }
       }
     }
   }

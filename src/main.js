@@ -28,6 +28,6 @@ window.is_wx = function () {
   if (ua.includes('MicroMessenger')) {
     return true
   } else {
-    return true
+    return false
   }
 }
