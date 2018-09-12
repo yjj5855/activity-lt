@@ -121,6 +121,13 @@
       </div>
     </div>
 
+    <!--公众号 微博-->
+    <div style="position: relative;background: #fff;padding-top: 10%;" v-if="firstVisibility">
+      <x-img class="ximg-demo" :src="`static/home/home-10.png`" :offset="-400"/>
+
+      <div style="position: absolute;bottom: 23%;left: 10%;width: 17%;height: 30%;" @click="onWeixinClick"></div>
+      <div style="position: absolute;bottom: 23%;left: 32%;width: 17%;height: 30%;" @click="onWeiboClick"></div>
+    </div>
 
     <!--视频-->
     <div v-transfer-dom>
@@ -136,7 +143,7 @@
 
     <!--一元购-->
     <div style="position: fixed;left: 0;top: 10%;" v-if="firstVisibility" >
-      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 200px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
+      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
     </div>
 
     <div v-transfer-dom>
@@ -145,6 +152,13 @@
         <x-icon type="ios-close-empty" size="60" style="position: fixed;right: 20px;top: 20px;background: #fff;border-radius: 10px;" @click.native="bannerPopupStatus=false"></x-icon>
       </popup>
     </div>
+
+    <div v-transfer-dom>
+      <x-dialog v-model="showQrCode" hide-on-blur>
+        <img src="static/home/wxqrcode.jpg"/>
+      </x-dialog>
+    </div>
+
   </div>
 </template>
 
@@ -230,7 +244,9 @@
 
         yiyuanUrl: 'https://h5.m.taobao.com/awp/core/detail.htm?id=576977040134',
 
-        scrollTopPx: 0
+        scrollTopPx: 0,
+
+        showQrCode: false
       }
     },
     mounted () {
@@ -247,6 +263,10 @@
           })
           $('.btn-img').on('touchend', function () {
             $(this).css({transform: 'scale(1)'})
+          })
+
+          $('body').on('click', function () {
+
           })
         }, 300)
       }, 300)
@@ -311,6 +331,12 @@
           height: 'auto'
         })
         $(window).scrollTop(this.scrollTopPx)
+      },
+      onWeixinClick () {
+        this.showQrCode = true
+      },
+      onWeiboClick () {
+        window.location.href = 'https://weibo.com/6087233450/profile?rightmod=1&wvr=6&mod=personinfo'
       }
     }
   }
