@@ -25,7 +25,7 @@
     <!--banner-->
     <div style="position: relative;overflow: hidden;margin-top: 16%;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img"/>
-      <swiper v-if="firstVisibility" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
+      <swiper v-if="firstVisibility" :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
@@ -68,7 +68,7 @@
       <div style="position: absolute; top: 44%;left: 70%;width: 17%;height: 12%;"></div>
 
       <!--3个视频-->
-      <swiper auto :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
+      <swiper auto :duration="600" :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 26%;text-align: center;">
@@ -93,7 +93,7 @@
       <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
-      <swiper auto :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
+      <swiper auto :duration="600" :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
@@ -108,14 +108,16 @@
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="-400"/>
       <div style="position: absolute;top: 2%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img src="static/home/dazhuanpan-bg.png" style="width: 90%;"/>
-      </div>
-      <div style="position: absolute;top: 27%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img class="dazhuanpan" src="static/home/dazhuanpan-yuan.png" style="width: 60%;"/>
+        <x-img src="static/home/dazhuanpan-bg.png" style="width: 100%;"/>
       </div>
 
+
       <div style="position: absolute;top: 30%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img class="dazhuanpan-yuan" src="static/home/dazhuanpan.png" style="width: 50%;"/>
+        <x-img class="dazhuanpan-yuan" src="static/home/dazhuanpan-yuan.png" style="width: 65%;"/>
+      </div>
+
+      <div style="position: absolute;top: 34%;left: 0;right: 0;text-align: center;overflow: hidden;">
+        <x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 52%;"/>
 
         <div style="position: absolute;width: 100%;bottom: 40%;">
           <flexbox style="justify-content: center;">
