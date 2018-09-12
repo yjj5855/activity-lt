@@ -25,14 +25,14 @@
     <!--banner-->
     <div style="position: relative;overflow: hidden;margin-top: 16%;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img"/>
-      <swiper v-if="firstVisibility" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false">
+      <swiper v-if="firstVisibility" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
-            <img src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
+            <img class="img-btn" src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
           </div>
           <div style="position: absolute;left: 0;right: 0;bottom: 11%;text-align: center;" v-else>
-            <img src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
+            <img class="img-btn" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
           </div>
         </swiper-item>
         <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
@@ -68,7 +68,7 @@
       <div style="position: absolute; top: 44%;left: 70%;width: 17%;height: 12%;"></div>
 
       <!--3个视频-->
-      <swiper :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
+      <swiper auto :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 100%;"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 26%;text-align: center;">
@@ -85,7 +85,7 @@
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
       <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
-      <x-img src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
+      <x-img class="img-btn" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
     </div>
 
     <!--宝宝banner-->
@@ -93,7 +93,7 @@
       <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
-      <swiper :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
+      <swiper auto :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
@@ -117,7 +117,7 @@
       </div>
 
       <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;">
-        <x-img src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
+        <x-img class="img-btn" src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
       </div>
     </div>
 
@@ -125,17 +125,17 @@
     <!--视频-->
     <div v-transfer-dom>
       <x-dialog v-model="showVideoBox" class="dialog-demo video" id="video">
+        <div style="text-align: right;" @click.stop="showVideoBox=false">
+          <x-icon type="ios-close-outline" size="50" style="fill:#fff;"></x-icon>
+        </div>
         <video controls="controls" :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1">
           <source :src="videoSrc" type="video/mp4"/>
         </video>
-        <div @click.stop="showVideoBox=false">
-          <x-icon type="ios-close-outline" size="50" style="fill:#fff;margin-top: 20px;"></x-icon>
-        </div>
       </x-dialog>
     </div>
 
     <!--一元购-->
-    <div style="position: fixed;right: 0;top: 10%;" v-if="firstVisibility" >
+    <div style="position: fixed;left: 0;top: 10%;" v-if="firstVisibility" >
       <img src="static/home/yiyuan.png" class="yiyuan" style="width: 200px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
     </div>
 
@@ -198,9 +198,9 @@
         bannerIndex: 0,
 
         videoList: [
-          'static/home/video-kunao.png',
+          'static/home/video-zhuomicang.png',
           'static/home/video-xizao.png',
-          'static/home/video-zhuomicang.png'
+          'static/home/video-kunao.png'
         ],
         videos: [
           'video-kunao.mp4',
@@ -238,6 +238,15 @@
 
       setTimeout(() => {
         this.firstVisibility = true
+
+        setTimeout(() => {
+          $('.img-btn').on('touchstart', function () {
+            $(this).css({transform: 'scale(0.9)'})
+          })
+          $('.img-btn').on('touchend', function () {
+            $(this).css({transform: 'scale(1)'})
+          })
+        })
       }, 300)
     },
     methods: {
