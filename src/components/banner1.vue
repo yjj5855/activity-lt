@@ -6,7 +6,7 @@
     <div style="position: relative;" >
       <img class="ximg-demo" src="static/b1/b1-3.jpg" :offset="-200"/>
       <div style="position: absolute;left: 0;right: 0;text-align: center;top: 61%;">
-        <img src="static/btn-goumai.png" class="img-btn" style="width: 45%;" @click="onBtnClick" :data-clipboard-text="url">
+        <img src="static/btn-goumai.png" class="img-btn btn-img" style="width: 45%;" @click="onBtnClick" :data-clipboard-text="url">
       </div>
     </div>
   </div>
@@ -14,6 +14,7 @@
 
 
 <script>
+  import $ from 'jquery'
   import {XImg} from 'vux'
   export default {
     components: {
@@ -25,6 +26,14 @@
       }
     },
     mounted () {
+      setTimeout(() => {
+        $('.btn-img').on('touchstart', function () {
+          $(this).css({transform: 'scale(0.9)'})
+        })
+        $('.btn-img').on('touchend', function () {
+          $(this).css({transform: 'scale(1)'})
+        })
+      }, 300)
     },
     methods: {
       onBtnClick () {

@@ -10,13 +10,13 @@
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
         <br>
-        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">
-          <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
+        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
+          <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
         <br>
-        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
-          <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
+        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">
+          <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
       </div>
@@ -29,10 +29,10 @@
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
-            <img class="img-btn" src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
+            <img class="btn-img" src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
           </div>
           <div style="position: absolute;left: 0;right: 0;bottom: 11%;text-align: center;" v-else>
-            <img class="img-btn" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
+            <img class="btn-img" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
           </div>
         </swiper-item>
         <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
@@ -85,7 +85,7 @@
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
       <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
-      <x-img class="img-btn" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
+      <x-img class="btn-img" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
     </div>
 
     <!--宝宝banner-->
@@ -117,7 +117,7 @@
       </div>
 
       <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;">
-        <x-img class="img-btn" src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
+        <x-img class="btn-img" src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
       </div>
     </div>
 
@@ -228,7 +228,9 @@
         bannerPopupStatus: false,
         banner: '',
 
-        yiyuanUrl: 'https://h5.m.taobao.com/awp/core/detail.htm?id=576977040134'
+        yiyuanUrl: 'https://h5.m.taobao.com/awp/core/detail.htm?id=576977040134',
+
+        scrollTopPx: 0
       }
     },
     mounted () {
@@ -240,13 +242,13 @@
         this.firstVisibility = true
 
         setTimeout(() => {
-          $('.img-btn').on('touchstart', function () {
+          $('.btn-img').on('touchstart', function () {
             $(this).css({transform: 'scale(0.9)'})
           })
-          $('.img-btn').on('touchend', function () {
+          $('.btn-img').on('touchend', function () {
             $(this).css({transform: 'scale(1)'})
           })
-        })
+        }, 300)
       }, 300)
     },
     methods: {
@@ -298,13 +300,17 @@
       },
       onBannerShow () {
         $('body').css({
-          'overflow-y': 'hidden'
+          'overflow-y': 'hidden',
+          height: '100vh'
         })
+        this.scrollTopPx = $(window).scrollTop()
       },
       onBannerHide () {
         $('body').css({
-          'overflow-y': 'auto'
+          'overflow-y': 'auto',
+          height: 'auto'
         })
+        $(window).scrollTop(this.scrollTopPx)
       }
     }
   }
