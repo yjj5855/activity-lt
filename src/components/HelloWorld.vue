@@ -4,7 +4,7 @@
       <x-img class="ximg-demo" :src="`static/home/topbar.png`"/>
       <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
-      <div v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
+      <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
         <flexbox style="margin: 5px 0;" @click.native="onBannerClick(0)">
           <flexbox-item style="font-size: 28px;">新款小老虎</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
@@ -104,14 +104,22 @@
 
     <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
 
+    <!--大转盘-->
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="-400"/>
-      <div style="position: absolute;top: 22%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 90%;"/>
+      <div style="position: absolute;top: 2%;left: 0;right: 0;text-align: center;overflow: hidden;">
+        <x-img src="static/home/dazhuanpan-bg.png" style="width: 90%;"/>
+      </div>
+      <div style="position: absolute;top: 27%;left: 0;right: 0;text-align: center;overflow: hidden;">
+        <x-img class="dazhuanpan" src="static/home/dazhuanpan-yuan.png" style="width: 60%;"/>
+      </div>
 
-        <div style="position: absolute;width: 100%;bottom: 45%;">
+      <div style="position: absolute;top: 30%;left: 0;right: 0;text-align: center;overflow: hidden;">
+        <x-img class="dazhuanpan-yuan" src="static/home/dazhuanpan.png" style="width: 50%;"/>
+
+        <div style="position: absolute;width: 100%;bottom: 40%;">
           <flexbox style="justify-content: center;">
-            <x-img class="dazhuanpan-go" src="static/home/dazhuanpan-go.jpg" style="width: 10%;"/>
+            <x-img class="dazhuanpan-go" src="static/home/dazhuanpan-go.png" style="width: 10%;"/>
           </flexbox>
         </div>
       </div>
@@ -265,8 +273,17 @@
             $(this).css({transform: 'scale(1)'})
           })
 
-          $('body').on('click', function () {
+          let self = this
+          $('body').on('click', function (event) {
+            let touchDiv = event.target
+            let darwer = document.getElementById('drawer')
+            if (darwer) {
+              if (darwer.contains(touchDiv)) {
 
+              } else {
+                self.drawerVisibility = false
+              }
+            }
           })
         }, 300)
       }, 300)
