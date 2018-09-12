@@ -11,12 +11,12 @@
         </flexbox>
         <br>
         <flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">
-          <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
+          <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
         <br>
         <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
-          <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
+          <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
       </div>
@@ -93,7 +93,7 @@
       <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
-      <swiper :aspect-ratio="919/645" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
+      <swiper :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
@@ -140,7 +140,7 @@
     </div>
 
     <div v-transfer-dom>
-      <popup v-model="bannerPopupStatus" height="100%">
+      <popup v-model="bannerPopupStatus" height="100%" @on-show="onBannerShow" @on-hide="onBannerHide">
         <component :is="banner"></component>
         <x-icon type="ios-close-empty" size="60" style="position: fixed;right: 20px;top: 20px;background: #fff;border-radius: 10px;" @click.native="bannerPopupStatus=false"></x-icon>
       </popup>
@@ -282,10 +282,20 @@
         if (window.is_wx()) {
           let a = new window.ClipboardJS('.yiyuan')
           console.log(a)
-          this.$vux.toast.text(`链接已复制，请在其他浏览器中打开`)
+          this.$vux.toast.text(`<span style="font-size: 30px;">链接已复制，请在其他浏览器中打开</span>`)
         } else {
           window.location.href = this.yiyuanUrl
         }
+      },
+      onBannerShow () {
+        $('body').css({
+          'overflow-y': 'hidden'
+        })
+      },
+      onBannerHide () {
+        $('body').css({
+          'overflow-y': 'auto'
+        })
       }
     }
   }

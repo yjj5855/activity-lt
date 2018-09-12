@@ -25,7 +25,7 @@ new Vue({
 
 window.is_wx = function () {
   var ua = navigator.userAgent.toLowerCase()
-  if (ua.includes('MicroMessenger')) {
+  if (ua.includes('micromessenger')) {
     return true
   } else {
     return false

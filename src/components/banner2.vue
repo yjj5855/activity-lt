@@ -29,7 +29,7 @@
         if (window.is_wx()) {
           let a = new window.ClipboardJS('.img-btn')
           console.log(a)
-          this.$vux.toast.text('链接已复制，请在其他浏览器中打开')
+          this.$vux.toast.text(`<span style="font-size: 30px;">链接已复制，请在其他浏览器中打开</span>`)
         } else {
           window.location.href = this.url
         }
