@@ -61,7 +61,7 @@
 
     <!--4个商城-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="-400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="400"/>
       <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;"></div>
       <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;"></div>
       <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;"></div>
@@ -83,14 +83,14 @@
 
     <!--花絮视频-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="-400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="400"/>
       <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
-      <x-img class="btn-img" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
+      <img class="btn-img" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
     </div>
 
     <!--宝宝banner-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="-400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="400"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
       <swiper auto :duration="600" :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
@@ -102,11 +102,11 @@
       <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
 
-    <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="-400"/>
+    <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="400"/>
 
     <!--大转盘-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="-400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="400"/>
       <div style="position: absolute;top: 2%;left: 0;right: 0;text-align: center;overflow: hidden;">
         <x-img src="static/home/dazhuanpan-bg.png" style="width: 100%;"/>
       </div>
@@ -133,7 +133,7 @@
 
     <!--公众号 微博-->
     <div style="position: relative;background: #fff;padding-top: 10%;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-10.png`" :offset="-400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-10.png`" :offset="400"/>
 
       <div style="position: absolute;bottom: 23%;left: 10%;width: 17%;height: 30%;" @click="onWeixinClick"></div>
       <div style="position: absolute;bottom: 23%;left: 32%;width: 17%;height: 30%;" @click="onWeiboClick"></div>
