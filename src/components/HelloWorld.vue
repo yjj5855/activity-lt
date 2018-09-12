@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;">
-      <x-img class="ximg-demo" :src="`static/home/topbar.png`"/>
+      <x-img class="ximg-demo" :src="`static/home/topbar2.png`"/>
       <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
       <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
@@ -9,16 +9,16 @@
           <flexbox-item style="font-size: 28px;">新款小老虎</flexbox-item>
           <x-icon type="ios-arrow-right" size="40"></x-icon>
         </flexbox>
-        <br>
-        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
-          <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
-          <x-icon type="ios-arrow-right" size="40"></x-icon>
-        </flexbox>
-        <br>
-        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">
-          <flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>
-          <x-icon type="ios-arrow-right" size="40"></x-icon>
-        </flexbox>
+        <!--<br>-->
+        <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">-->
+          <!--<flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>-->
+          <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
+        <!--</flexbox>-->
+        <!--<br>-->
+        <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">-->
+          <!--<flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>-->
+          <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
+        <!--</flexbox>-->
       </div>
     </div>
 
@@ -35,37 +35,36 @@
             <img class="btn-img" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
           </div>
         </swiper-item>
-        <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
-        <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">
+        <!--<img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex&#45;&#45; : ''">-->
+        <!--<img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">-->
       </swiper>
     </div>
 
     <!--倒计时-->
-    <div style="position: relative;" v-if="$route.query.showClock">
-      <x-img class="ximg-demo" :src="`static/home/home-2.jpg`"/>
+    <!--<div style="position: relative;" v-if="$route.query.showClock">-->
+      <!--<x-img class="ximg-demo" :src="`static/home/home-2.jpg`"/>-->
 
-      <div style="position: absolute;left: 0;right: 0;top: -8%;">
-        <x-img src="static/home/daojishi.png" width="100%"/>
-        <clocker time="2018-10-01" style="position: absolute;display: block;top: 29%;left: 0;right: 0;font-size: 50px;">
-          <div style="position: relative;width: 100%;color: #fff;">
-            <span style="position: absolute;left: 8%;">%D</span>
-            <span style="position: absolute;left: 40%;">%H</span>
-            <span style="position: absolute;left: 70%;">%M</span>
-            &nbsp;
-          </div>
-        </clocker>
-      </div>
-      <div style="position: absolute; left: 0;bottom: 17%;width: 100%;height: 42%;" @click="playVideo('zbyrsp.mp4')"></div>
-
-    </div>
+      <!--<div style="position: absolute;left: 0;right: 0;top: -8%;">-->
+        <!--<x-img src="static/home/daojishi.png" width="100%"/>-->
+        <!--<clocker time="2018-10-01" style="position: absolute;display: block;top: 29%;left: 0;right: 0;font-size: 50px;">-->
+          <!--<div style="position: relative;width: 100%;color: #fff;">-->
+            <!--<span style="position: absolute;left: 8%;">%D</span>-->
+            <!--<span style="position: absolute;left: 40%;">%H</span>-->
+            <!--<span style="position: absolute;left: 70%;">%M</span>-->
+            <!--&nbsp;-->
+          <!--</div>-->
+        <!--</clocker>-->
+      <!--</div>-->
+      <!--<div style="position: absolute; left: 0;bottom: 17%;width: 100%;height: 42%;" @click="playVideo('zbyrsp.mp4')"></div>-->
+    <!--</div>-->
 
     <!--4个商城-->
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="400"/>
-      <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;"></div>
-      <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;"></div>
-      <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;"></div>
-      <div style="position: absolute; top: 44%;left: 70%;width: 17%;height: 12%;"></div>
+      <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
+      <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
+      <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
+      <div style="position: absolute; top: 44%;left: 70%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
 
       <!--3个视频-->
       <swiper auto :duration="600" :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
@@ -76,8 +75,8 @@
           </div>
         </swiper-item>
       </swiper>
-      <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex-- : ''">
-      <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;bottom: 12%;" @click="videoIndex < 2 ? videoIndex++ : ''">
+      <!--<img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex&#45;&#45; : ''">-->
+      <!--<img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;bottom: 12%;" @click="videoIndex < 2 ? videoIndex++ : ''">-->
 
     </div>
 
@@ -85,7 +84,7 @@
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="400"/>
       <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
-      <img class="btn-img" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;"/>
+      <img class="btn-img" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;" @click="goUrl('http://dwz.cn/WX0zcKEY')"/>
     </div>
 
     <!--宝宝banner-->
@@ -105,31 +104,31 @@
     <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="400"/>
 
     <!--大转盘-->
-    <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="400"/>
-      <div style="position: absolute;top: 2%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img src="static/home/dazhuanpan-bg.png" style="width: 100%;"/>
-      </div>
+    <!--<div style="position: relative;" v-if="firstVisibility">-->
+      <!--<x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="400"/>-->
+      <!--<div style="position: absolute;top: 2%;left: 0;right: 0;text-align: center;overflow: hidden;">-->
+        <!--<x-img src="static/home/dazhuanpan-bg.png" style="width: 100%;"/>-->
+      <!--</div>-->
 
 
-      <div style="position: absolute;top: 30%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img class="dazhuanpan-yuan" src="static/home/dazhuanpan-yuan.png" style="width: 65%;"/>
-      </div>
+      <!--<div style="position: absolute;top: 30%;left: 0;right: 0;text-align: center;overflow: hidden;">-->
+        <!--<x-img class="dazhuanpan-yuan" src="static/home/dazhuanpan-yuan.png" style="width: 65%;"/>-->
+      <!--</div>-->
 
-      <div style="position: absolute;top: 34%;left: 0;right: 0;text-align: center;overflow: hidden;">
-        <x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 52%;"/>
+      <!--<div style="position: absolute;top: 34%;left: 0;right: 0;text-align: center;overflow: hidden;">-->
+        <!--<x-img class="dazhuanpan" src="static/home/dazhuanpan.png" style="width: 52%;"/>-->
 
-        <div style="position: absolute;width: 100%;bottom: 40%;">
-          <flexbox style="justify-content: center;">
-            <x-img class="dazhuanpan-go" src="static/home/dazhuanpan-go.png" style="width: 10%;"/>
-          </flexbox>
-        </div>
-      </div>
+        <!--<div style="position: absolute;width: 100%;bottom: 40%;">-->
+          <!--<flexbox style="justify-content: center;">-->
+            <!--<x-img class="dazhuanpan-go" src="static/home/dazhuanpan-go.png" style="width: 10%;"/>-->
+          <!--</flexbox>-->
+        <!--</div>-->
+      <!--</div>-->
 
-      <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;">
-        <x-img class="btn-img" src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>
-      </div>
-    </div>
+      <!--<div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;">-->
+        <!--<x-img class="btn-img" src="static/home/btn-fanhui.png" style="width: 47%;" @click.native="scrollTop()"/>-->
+      <!--</div>-->
+    <!--</div>-->
 
     <!--公众号 微博-->
     <div style="position: relative;background: #fff;padding-top: 10%;" v-if="firstVisibility">
@@ -142,7 +141,7 @@
     <!--视频-->
     <div v-transfer-dom>
       <x-dialog v-model="showVideoBox" class="dialog-demo video" id="video">
-        <div style="text-align: right;" @click.stop="showVideoBox=false">
+        <div style="text-align: right;" @click.stop="closeVideo">
           <x-icon type="ios-close-outline" size="50" style="fill:#fff;"></x-icon>
         </div>
         <video controls="controls" :src="videoSrc" x-webkit-airplay="true" webkit-playsinline="true" preload="auto" ontimeupdate="videoUpdate(this)" id="video-1">
@@ -152,12 +151,13 @@
     </div>
 
     <!--一元购-->
-    <div style="position: fixed;left: 0;top: 10%;" v-if="firstVisibility" >
-      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
-    </div>
+    <!--<div style="position: fixed;left: 0;top: 10%;" v-if="firstVisibility" >-->
+      <!--<img src="static/home/yiyuan.png" class="yiyuan" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>-->
+    <!--</div>-->
 
+    <!--banner-popup-->
     <div v-transfer-dom>
-      <popup v-model="bannerPopupStatus" height="100%" @on-show="onBannerShow" @on-hide="onBannerHide">
+      <popup ref="bannerPopup" v-model="bannerPopupStatus" height="100%" @on-show="onBannerShow" @on-hide="onBannerHide" style="top: 0;bottom:0;overflow-y: scroll;">
         <component :is="banner"></component>
         <x-icon type="ios-close-empty" size="60" style="position: fixed;right: 20px;top: 20px;background: #fff;border-radius: 10px;" @click.native="bannerPopupStatus=false"></x-icon>
       </popup>
@@ -214,17 +214,17 @@
 
         drawerVisibility: false,
         bannerList: [
-          'static/home/banner-1.png',
-          'static/home/banner-2.png',
-          'static/home/banner-3.png',
-          'static/home/banner-4.png'
+          'static/home/banner-1.png'
+          // 'static/home/banner-2.png',
+          // 'static/home/banner-3.png',
+          // 'static/home/banner-4.png'
         ],
         bannerIndex: 0,
 
         videoList: [
-          'static/home/video-zhuomicang.png',
-          'static/home/video-xizao.png',
           'static/home/video-kunao.png'
+          // 'static/home/video-xizao.png',
+          // 'static/home/video-kunao.png'
         ],
         videos: [
           'video-kunao.mp4',
@@ -237,8 +237,8 @@
           'static/home/baobao-1.png',
           'static/home/baobao-2.png',
           'static/home/baobao-3.png',
-          'static/home/baobao-4.png',
-          'static/home/baobao-5.png'
+          'static/home/baobao-4.png'
+          // 'static/home/baobao-5.png'
         ],
         baobaoIndex: 0,
 
@@ -325,6 +325,10 @@
           }
         }, 300)
       },
+      closeVideo () {
+        $('#video-1')[0].pause()
+        this.showVideoBox = false
+      },
       scrollTop () {
         $(window).scrollTop(0)
       },
@@ -337,18 +341,24 @@
           window.location.href = this.yiyuanUrl
         }
       },
+      goUrl (url, isTaobaoLink = false) {
+        window.location.href = url
+      },
       onBannerShow () {
-        $('body').css({
-          'overflow-y': 'hidden',
-          height: '100vh'
-        })
+        // $('body').css({
+        //   'overflow-y': 'hidden',
+        //   height: '100vh'
+        // })
         this.scrollTopPx = $(window).scrollTop()
+        this.$nextTick(() => {
+          this.$refs.bannerPopup.$el.scrollTop = 0
+        })
       },
       onBannerHide () {
-        $('body').css({
-          'overflow-y': 'auto',
-          height: 'auto'
-        })
+        // $('body').css({
+        //   'overflow-y': 'auto',
+        //   height: 'auto'
+        // })
         $(window).scrollTop(this.scrollTopPx)
       },
       onWeixinClick () {

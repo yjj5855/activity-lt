@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div style="height: 100%;">
     <img class="ximg-demo" src="static/b1/b1-1.jpg"/>
-    <img class="ximg-demo" src="static/b1/b1-2.jpg" :offset="-200"/>
+    <img class="ximg-demo" src="static/b1/b1-2.jpg" :offset="200"/>
 
     <div style="position: relative;" >
-      <img class="ximg-demo" src="static/b1/b1-3.jpg" :offset="-200"/>
+      <img class="ximg-demo" src="static/b1/b1-3.jpg" :offset="200"/>
       <div style="position: absolute;left: 0;right: 0;text-align: center;top: 61%;">
         <img src="static/btn-goumai.png" class="img-btn btn-img" style="width: 45%;" @click="onBtnClick" :data-clipboard-text="url">
       </div>
