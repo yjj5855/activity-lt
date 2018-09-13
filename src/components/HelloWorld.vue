@@ -24,7 +24,7 @@
 
     <!--banner-->
     <div style="position: relative;overflow: hidden;margin-top: 16%;" :style="bannerStyle">
-      <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img"/>
+      <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img" style="height: 1200px;"/>
       <swiper v-if="firstVisibility" :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
@@ -60,7 +60,7 @@
 
     <!--4个商城-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="400" style="height: 1855px;"/>
       <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
       <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
       <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
@@ -82,8 +82,8 @@
 
     <!--花絮视频-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="400"/>
-      <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
+      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="400" style="height: 1439px;"/>
+      <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
 
       <lt-button src="static/home/btn-shangdian.png" style="position:absolute;bottom: 4%;left: 3%;" @click.native="goUrl('http://dwz.cn/WX0zcKEY')">
         前往旗舰店购买
@@ -92,7 +92,7 @@
 
     <!--宝宝banner-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="400" style="height: 1261px;"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
       <swiper auto :duration="600" :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
@@ -104,7 +104,7 @@
       <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
 
-    <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="400"/>
+    <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="400" style="height: 2635px;"/>
 
     <!--大转盘-->
     <!--<div style="position: relative;" v-if="firstVisibility">-->
@@ -135,7 +135,7 @@
 
     <!--公众号 微博-->
     <div style="position: relative;background: #fff;padding-top: 10%;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-10.png`" :offset="400"/>
+      <x-img class="ximg-demo" :src="`static/home/home-10.png`" :offset="400" style="height: 304px;"/>
 
       <div style="position: absolute;bottom: 23%;left: 10%;width: 17%;height: 30%;" @click="onWeixinClick"></div>
       <div style="position: absolute;bottom: 23%;left: 32%;width: 17%;height: 30%;" @click="onWeiboClick"></div>
@@ -172,6 +172,8 @@
       </x-dialog>
     </div>
 
+
+    <img class="lt-star" src="/static/home/wujiaoxing.png" width="8%" style="position: absolute; top: 233px;left: 17px;"/>
   </div>
 </template>
 
