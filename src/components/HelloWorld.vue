@@ -28,8 +28,8 @@
       <swiper v-if="firstVisibility" :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
-          <div style="position: absolute;left: 0;right: 0;bottom: 6%;text-align: center;" v-if="index < 3">
-            <img class="btn-img" src="static/home/btn-liaojie.png" style="width: 40%;" @click="onBannerClick(index)">
+          <div style="position: absolute;left: 0;right: 0;bottom: 8%;text-align: center;" v-if="index < 3">
+            <lt-button src="static/home/btn-liaojie.png" @click.native="onBannerClick(index)">&emsp;了解更多&emsp;</lt-button>
           </div>
           <div style="position: absolute;left: 0;right: 0;bottom: 11%;text-align: center;" v-else>
             <img class="btn-img" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
@@ -84,7 +84,10 @@
     <div style="position: relative;" v-if="firstVisibility">
       <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="400"/>
       <div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>
-      <img class="btn-img" src="static/home/btn-shangdian.png" style="width: 40%;position:absolute;bottom: 4%;left: 3%;" @click="goUrl('http://dwz.cn/WX0zcKEY')"/>
+
+      <lt-button src="static/home/btn-shangdian.png" style="position:absolute;bottom: 4%;left: 3%;" @click.native="goUrl('http://dwz.cn/WX0zcKEY')">
+        前往旗舰店购买
+      </lt-button>
     </div>
 
     <!--宝宝banner-->
@@ -195,6 +198,7 @@
       TransferDom
     },
     components: {
+      'lt-button': require('../components/lt-button').default,
       banner1: require('./banner1').default,
       banner2: require('./banner2').default,
       banner3: require('./banner3').default,

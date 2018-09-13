@@ -1,0 +1,22 @@
+@fuschia: #e79e96;
+@button-bg: @fuschia;
+@button-text-color: #fff;
+@baby-blue: #f8faff;
+
+.bubbly-button{
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 30px;
+  padding:  15px 50px;
+  background: linear-gradient(rgb(255, 176, 168), #d18e86);
+  color: @button-text-color;
+  border-radius: 50px;
+  border: none;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  user-select: none;
+
+  * {
+    user-select: none;
+  }
+}
