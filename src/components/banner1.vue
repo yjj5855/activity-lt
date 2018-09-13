@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100%;">
+  <div>
     <img class="ximg-demo" src="static/b1/b1-1.jpg"/>
     <img class="ximg-demo" src="static/b1/b1-2.jpg" :offset="200"/>
 
@@ -9,6 +9,9 @@
         <img src="static/btn-goumai.png" class="img-btn btn-img" style="width: 45%;" @click="onBtnClick" :data-clipboard-text="url">
       </div>
     </div>
+
+    <!--关闭按钮-->
+    <x-icon type="ios-close-empty" size="60" style="position: fixed;right: 20px;top: 20px;background: #fff;border-radius: 10px;" @click.native="$router.replace({name: 'home', query: {type: 'back'}})"></x-icon>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;">
-      <x-img class="ximg-demo" :src="`static/home/topbar2.png`"/>
+      <img class="ximg-demo" :src="`static/home/topbar2.png`"/>
       <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
       <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
@@ -25,7 +25,7 @@
     <!--banner-->
     <div style="position: relative;overflow: hidden;margin-top: 16%;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img" style="height: 1200px;"/>
-      <swiper v-if="firstVisibility" :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
+      <swiper :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 8%;text-align: center;" v-if="index < 3">
@@ -42,7 +42,7 @@
 
     <!--倒计时-->
     <!--<div style="position: relative;" v-if="$route.query.showClock">-->
-      <!--<x-img class="ximg-demo" :src="`static/home/home-2.jpg`"/>-->
+      <!--<img class="ximg-demo" :src="`static/home/home-2.jpg`"/>-->
 
       <!--<div style="position: absolute;left: 0;right: 0;top: -8%;">-->
         <!--<x-img src="static/home/daojishi.png" width="100%"/>-->
@@ -60,7 +60,7 @@
 
     <!--4个商城-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-3.jpg`" :offset="400" style="height: 1855px;"/>
+      <img class="ximg-demo" :src="`static/home/home-3.jpg`" style="height: 1855px;"/>
       <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
       <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
       <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
@@ -82,7 +82,7 @@
 
     <!--花絮视频-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-4.jpg`" :offset="400" style="height: 1439px;"/>
+      <img class="ximg-demo" :src="`static/home/home-4.jpg`" style="height: 1439px;"/>
       <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
 
       <lt-button src="static/home/btn-shangdian.png" style="position:absolute;bottom: 4%;left: 3%;" @click.native="goUrl('http://dwz.cn/WX0zcKEY')">
@@ -92,7 +92,7 @@
 
     <!--宝宝banner-->
     <div style="position: relative;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-5.jpg`" :offset="400" style="height: 1261px;"/>
+      <img class="ximg-demo" :src="`static/home/home-5.jpg`"  style="height: 1261px;"/>
 
       <!--<x-img src="static/home/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
       <swiper auto :duration="600" :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 0;top: 1%;right: 0;" :show-dots="false">
@@ -104,11 +104,15 @@
       <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
 
-    <x-img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" :offset="400" style="height: 2635px;"/>
+    <div style="position: relative;" v-if="firstVisibility">
+      <img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" style="height: 2635px;"/>
+
+
+    </div>
 
     <!--大转盘-->
     <!--<div style="position: relative;" v-if="firstVisibility">-->
-      <!--<x-img class="ximg-demo" :src="`static/home/home-7.jpg`" :offset="400"/>-->
+      <!--<x-img class="ximg-demo" :src="`static/home/home-7.jpg`"/>-->
       <!--<div style="position: absolute;top: 2%;left: 0;right: 0;text-align: center;overflow: hidden;">-->
         <!--<x-img src="static/home/dazhuanpan-bg.png" style="width: 100%;"/>-->
       <!--</div>-->
@@ -135,7 +139,7 @@
 
     <!--公众号 微博-->
     <div style="position: relative;background: #fff;padding-top: 10%;" v-if="firstVisibility">
-      <x-img class="ximg-demo" :src="`static/home/home-10.png`" :offset="400" style="height: 304px;"/>
+      <img class="ximg-demo" :src="`static/home/home-10.png`" style="height: 304px;"/>
 
       <div style="position: absolute;bottom: 23%;left: 10%;width: 17%;height: 30%;" @click="onWeixinClick"></div>
       <div style="position: absolute;bottom: 23%;left: 32%;width: 17%;height: 30%;" @click="onWeiboClick"></div>
@@ -221,7 +225,7 @@
         drawerVisibility: false,
         bannerList: [
           'static/home/banner-1.png'
-          // 'static/home/banner-2.png',
+          // 'static/home/banner-2.png'
           // 'static/home/banner-3.png',
           // 'static/home/banner-4.png'
         ],
@@ -301,6 +305,7 @@
         if (index === 3) {
 
         } else if (index === 0) {
+          // this.$router.replace({name: 'banner1'})
           this.banner = 'banner1'
           this.$nextTick(() => {
             this.bannerPopupStatus = true
@@ -351,20 +356,18 @@
         window.location.href = url
       },
       onBannerShow () {
-        // $('body').css({
-        //   'overflow-y': 'hidden',
-        //   height: '100vh'
-        // })
+        $('#app').css({
+          display: 'none'
+        })
         this.scrollTopPx = $(window).scrollTop()
         this.$nextTick(() => {
           this.$refs.bannerPopup.$el.scrollTop = 0
         })
       },
       onBannerHide () {
-        // $('body').css({
-        //   'overflow-y': 'auto',
-        //   height: 'auto'
-        // })
+        $('#app').css({
+          display: 'block'
+        })
         $(window).scrollTop(this.scrollTopPx)
       },
       onWeixinClick () {
