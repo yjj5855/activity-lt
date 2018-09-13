@@ -25,7 +25,7 @@
     <!--banner-->
     <div style="position: relative;overflow: hidden;margin-top: 16%;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img" style="height: 1200px;"/>
-      <swiper :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;" :show-dots="false" auto>
+      <swiper :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;z-index: 1;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
           <div style="position: absolute;left: 0;right: 0;bottom: 8%;text-align: center;" v-if="index < 3">
@@ -38,6 +38,16 @@
         <!--<img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex&#45;&#45; : ''">-->
         <!--<img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">-->
       </swiper>
+
+      <div style="position: absolute;left: 0;top: 10%;z-index: 0;">
+        <img class="lt-star2" src="static/home/home-1-yueliang.png" style="animation-delay: 1s"/>
+      </div>
+      <div style="position: absolute;left: 0;top: 16%;overflow-x: hidden;right: 0;z-index: 0;">
+        <img class="lt-che1" src="static/home/home-1-che.png"/>
+      </div>
+      <div style="position: absolute;left: 0;top: 73%;z-index: 0;">
+        <img class="lt-star2" src="static/home/home-1-star.png"/>
+      </div>
     </div>
 
     <!--倒计时-->
@@ -61,6 +71,16 @@
     <!--4个商城-->
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/home/home-3.jpg`" style="height: 1855px;"/>
+      <div style="position: absolute;left: 0;top: 10%;z-index: 0;">
+        <img class="lt-star2" src="static/home/home-3-star-1.png" style="animation-delay: .3s"/>
+      </div>
+      <div style="position: absolute;left: 0;top: 30%;z-index: 0;">
+        <img class="lt-star2" src="static/home/home-3-star-2.png" style="animation-delay: .6s"/>
+      </div>
+      <div style="position: absolute;left: 0;top: 57%;z-index: 0;">
+        <img class="lt-star2" src="static/home/home-3-star-3.png" style="animation-delay: .9s"/>
+      </div>
+
       <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
       <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
       <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
@@ -83,6 +103,9 @@
     <!--花絮视频-->
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/home/home-4.jpg`" style="height: 1439px;"/>
+      <div style="position: absolute;left: 0;top: 38%;">
+        <img class="lt-jiantou1" src="static/home/home-4-jiantou.png" style="overflow-x: hidden;"/>
+      </div>
       <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
 
       <lt-button src="static/home/btn-shangdian.png" style="position:absolute;bottom: 4%;left: 3%;" @click.native="goUrl('http://dwz.cn/WX0zcKEY')">
@@ -107,7 +130,21 @@
     <div style="position: relative;" v-if="firstVisibility">
       <img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" style="height: 2635px;"/>
 
-
+      <div style="position: absolute; top: 6%;left: 0;">
+        <img src="static/home/home-6-img-1.png" style="opacity: 0;"/>
+      </div>
+      <div style="position: absolute; top: 24%;left: 0;">
+        <img src="static/home/home-6-img-2.png" style="opacity: 0;"/>
+      </div>
+      <div style="position: absolute; top: 39%;left: 0;">
+        <img src="static/home/home-6-img-3.png" style="opacity: 0;"/>
+      </div>
+      <div style="position: absolute; top: 54%;left: 0;">
+        <img src="static/home/home-6-img-4.png" style="opacity: 0;"/>
+      </div>
+      <div style="position: absolute; top: 68%;left: 0;">
+        <img src="static/home/home-6-img-5.png" style="opacity: 0;"/>
+      </div>
     </div>
 
     <!--大转盘-->
@@ -177,7 +214,7 @@
     </div>
 
 
-    <img class="lt-star" src="/static/home/wujiaoxing.png" width="8%" style="position: absolute; top: 233px;left: 17px;"/>
+    <!--<img class="lt-star" src="static/home/wujiaoxing.png" width="8%" style="position: absolute; top: 233px;left: 17px;"/>-->
   </div>
 </template>
 
@@ -299,6 +336,43 @@
           })
         }, 300)
       }, 300)
+
+      let displayHeight = 600
+      let heightList = [4800, 5200, 5600, 6000, 6400]
+      $(window).on('scroll', function (e) {
+        let scrollTop = $(window).scrollTop()
+        console.log(scrollTop)
+        if (scrollTop > heightList[0]) {
+          let overPx = scrollTop - heightList[0]
+          $(`[src="static/home/home-6-img-1.png"]`).css({
+            opacity: (overPx) / displayHeight
+          })
+        }
+        if (scrollTop > heightList[1]) {
+          let overPx = scrollTop - heightList[1]
+          $(`[src="static/home/home-6-img-2.png"]`).css({
+            opacity: (overPx) / displayHeight
+          })
+        }
+        if (scrollTop > heightList[2]) {
+          let overPx = scrollTop - heightList[2]
+          $(`[src="static/home/home-6-img-3.png"]`).css({
+            opacity: (overPx) / displayHeight
+          })
+        }
+        if (scrollTop > heightList[3]) {
+          let overPx = scrollTop - heightList[3]
+          $(`[src="static/home/home-6-img-4.png"]`).css({
+            opacity: (overPx) / displayHeight
+          })
+        }
+        if (scrollTop > heightList[4]) {
+          let overPx = scrollTop - heightList[4]
+          $(`[src="static/home/home-6-img-5.png"]`).css({
+            opacity: (overPx) / displayHeight
+          })
+        }
+      })
     },
     methods: {
       onBannerClick (index) {
