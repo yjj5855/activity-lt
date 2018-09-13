@@ -82,11 +82,11 @@
 
 
 @keyframes lt-che1 {
+  //0% {
+  //  opacity: 1;
+  //  transform: translate3d(0,0,0);
+  //}
   0% {
-    opacity: 1;
-    transform: translate3d(0,0,0);
-  }
-  50% {
     opacity: 0;
     transform: translate3d(50px,0,0);
   }
@@ -97,16 +97,17 @@
 }
 .lt-che1 {
   max-width: 100%;
-  animation:lt-che1 3s linear infinite;
-  animation-iteration-count: 1
+  animation:lt-che1 2s linear infinite;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 
 @keyframes lt-yueliang {
+  //0% {
+  //  opacity: 1;
+  //}
   0% {
-    opacity: 1;
-  }
-  50% {
     opacity: 0;
   }
   100% {
@@ -115,6 +116,7 @@
 }
 .lt-yueliang {
   max-width: 100%;
-  animation:lt-yueliang 3s linear infinite;
-  animation-iteration-count: 1
+  animation:lt-yueliang 2s linear infinite;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }

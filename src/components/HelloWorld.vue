@@ -40,10 +40,10 @@
       </swiper>
 
       <div style="position: absolute;left: 0;top: 10%;z-index: 0;">
-        <img class="lt-yueliang" src="static/home/home-1-yueliang.png" style="animation-delay: .5s;"/>
+        <img class="lt-yueliang" src="static/home/home-1-yueliang.png" style="animation-delay: .5s;opacity: 0;"/>
       </div>
       <div style="position: absolute;left: 0;top: 16%;overflow-x: hidden;right: 0;z-index: 0;">
-        <img class="lt-che1" src="static/home/home-1-che.png" style="animation-delay: .5s;"/>
+        <img class="lt-che1" src="static/home/home-1-che.png" style="animation-delay: .5s;opacity: 0;"/>
       </div>
       <div style="position: absolute;left: 0;top: 73%;z-index: 0;">
         <img class="lt-star2" src="static/home/home-1-star.png"/>
@@ -356,7 +356,7 @@
               transform: `scale(${Math.min(overPx / displayHeight, 1)})`
             })
             if (overPx > displayHeight) {
-              optFlag[i] = true
+              // optFlag[i] = true
             }
           }
         }
@@ -368,6 +368,9 @@
             transform: 'translate3d(0,0,0)'
           })
           setTimeout(() => {
+            $(`[src="static/home/home-4-jiantou-2.png"]`).css({
+              transform: 'unset'
+            })
             $(`#home-4-goumai`).css({
               transition: 'unset'
             })
@@ -377,6 +380,11 @@
     },
     methods: {
       onBannerClick (index) {
+        this.scrollTopPx = $(window).scrollTop()
+        $('#app').css({
+          height: '1px',
+          'overflow-y': 'hidden'
+        })
         if (index === 3) {
 
         } else if (index === 0) {
@@ -431,17 +439,14 @@
         window.location.href = url
       },
       onBannerShow () {
-        $('#app').css({
-          display: 'none'
-        })
-        this.scrollTopPx = $(window).scrollTop()
         this.$nextTick(() => {
           this.$refs.bannerPopup.$el.scrollTop = 0
         })
       },
       onBannerHide () {
         $('#app').css({
-          display: 'block'
+          height: 'auto',
+          'overflow-y': 'auto'
         })
         $(window).scrollTop(this.scrollTopPx)
       },
