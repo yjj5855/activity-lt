@@ -40,10 +40,10 @@
       </swiper>
 
       <div style="position: absolute;left: 0;top: 10%;z-index: 0;">
-        <img class="lt-star2" src="static/home/home-1-yueliang.png" style="animation-delay: 1s"/>
+        <img class="lt-yueliang" src="static/home/home-1-yueliang.png" style="animation-delay: .5s;"/>
       </div>
       <div style="position: absolute;left: 0;top: 16%;overflow-x: hidden;right: 0;z-index: 0;">
-        <img class="lt-che1" src="static/home/home-1-che.png"/>
+        <img class="lt-che1" src="static/home/home-1-che.png" style="animation-delay: .5s;"/>
       </div>
       <div style="position: absolute;left: 0;top: 73%;z-index: 0;">
         <img class="lt-star2" src="static/home/home-1-star.png"/>
@@ -108,9 +108,14 @@
       </div>
       <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
 
-      <lt-button src="static/home/btn-shangdian.png" style="position:absolute;bottom: 4%;left: 3%;" @click.native="goUrl('http://dwz.cn/WX0zcKEY')">
-        前往旗舰店购买
-      </lt-button>
+      <div style="position: absolute;left: 0;bottom: 11%;right: 0;overflow: hidden;">
+        <img src="static/home/home-4-jiantou-2.png" style="transition: all 0.5s ease-in;transform: translate3d(-400px,0,0)"/>
+      </div>
+      <div style="position:absolute;bottom: 4%;left: 0%;right: 0;">
+        <lt-button id="home-4-goumai" src="static/home/btn-shangdian.png"  @click.native="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 4%;transition: all 0.5s ease-in;transform: translate3d(-400px,0,0)">
+          前往旗舰店购买
+        </lt-button>
+      </div>
     </div>
 
     <!--宝宝banner-->
@@ -130,19 +135,19 @@
     <div style="position: relative;" v-if="firstVisibility">
       <img v-if="firstVisibility" class="ximg-demo" :src="`static/home/home-6.jpg`" style="height: 2635px;"/>
 
-      <div style="position: absolute; top: 6%;left: 0;">
+      <div style="position: absolute; top: 6%;left: 41%;">
         <img src="static/home/home-6-img-1.png" style="opacity: 0;"/>
       </div>
-      <div style="position: absolute; top: 24%;left: 0;">
+      <div style="position: absolute; top: 24%;left: 17%;">
         <img src="static/home/home-6-img-2.png" style="opacity: 0;"/>
       </div>
-      <div style="position: absolute; top: 39%;left: 0;">
+      <div style="position: absolute; top: 39%;left: 63%;">
         <img src="static/home/home-6-img-3.png" style="opacity: 0;"/>
       </div>
-      <div style="position: absolute; top: 54%;left: 0;">
+      <div style="position: absolute; top: 54%;left: 5%;">
         <img src="static/home/home-6-img-4.png" style="opacity: 0;"/>
       </div>
-      <div style="position: absolute; top: 68%;left: 0;">
+      <div style="position: absolute; top: 68%;left: 5%;">
         <img src="static/home/home-6-img-5.png" style="opacity: 0;"/>
       </div>
     </div>
@@ -209,7 +214,7 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showQrCode" hide-on-blur>
-        <img src="static/home/wxqrcode.jpg"/>
+        <img src="static/home/wxqrcode.jpg" style="width: 300px;"/>
       </x-dialog>
     </div>
 
@@ -339,38 +344,34 @@
 
       let displayHeight = 600
       let heightList = [4800, 5200, 5600, 6000, 6400]
+      let optFlag = [false, false, false, false, false]
       $(window).on('scroll', function (e) {
         let scrollTop = $(window).scrollTop()
         console.log(scrollTop)
-        if (scrollTop > heightList[0]) {
-          let overPx = scrollTop - heightList[0]
-          $(`[src="static/home/home-6-img-1.png"]`).css({
-            opacity: (overPx) / displayHeight
-          })
+        for (let i = 0; i < heightList.length; i++) {
+          if (scrollTop > heightList[i] && !optFlag[i]) {
+            let overPx = scrollTop - heightList[i]
+            $(`[src="static/home/home-6-img-${i + 1}.png"]`).css({
+              opacity: overPx / displayHeight,
+              transform: `scale(${Math.min(overPx / displayHeight, 1)})`
+            })
+            if (overPx > displayHeight) {
+              optFlag[i] = true
+            }
+          }
         }
-        if (scrollTop > heightList[1]) {
-          let overPx = scrollTop - heightList[1]
-          $(`[src="static/home/home-6-img-2.png"]`).css({
-            opacity: (overPx) / displayHeight
+        if (scrollTop > 3400) {
+          $(`[src="static/home/home-4-jiantou-2.png"]`).css({
+            transform: 'translate3d(0,0,0)'
           })
-        }
-        if (scrollTop > heightList[2]) {
-          let overPx = scrollTop - heightList[2]
-          $(`[src="static/home/home-6-img-3.png"]`).css({
-            opacity: (overPx) / displayHeight
+          $(`#home-4-goumai`).css({
+            transform: 'translate3d(0,0,0)'
           })
-        }
-        if (scrollTop > heightList[3]) {
-          let overPx = scrollTop - heightList[3]
-          $(`[src="static/home/home-6-img-4.png"]`).css({
-            opacity: (overPx) / displayHeight
-          })
-        }
-        if (scrollTop > heightList[4]) {
-          let overPx = scrollTop - heightList[4]
-          $(`[src="static/home/home-6-img-5.png"]`).css({
-            opacity: (overPx) / displayHeight
-          })
+          setTimeout(() => {
+            $(`#home-4-goumai`).css({
+              transition: 'unset'
+            })
+          }, 500)
         }
       })
     },
