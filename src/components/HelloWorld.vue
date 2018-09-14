@@ -108,10 +108,10 @@
       </div>
       <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
 
-      <div ref="home-4-1" style="position: absolute;left: -400px;bottom: 5%;right: 0;overflow: hidden;width: 400px;">
+      <div ref="home-4-1" style="position: absolute;left: -400px;bottom: 0;padding-bottom:5%;overflow: hidden;width: 400px;">
         <img src="static/home/home-4-jiantou-2.png"/>
         <br>
-        <lt-button id="home-4-goumai" src="static/home/btn-shangdian.png"  @click.native="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 4%;">
+        <lt-button id="home-4-goumai" src="static/home/btn-shangdian.png"  @click="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 4%;">
           前往旗舰店购买
         </lt-button>
       </div>
@@ -127,8 +127,8 @@
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
       </swiper>
-      <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 45%;" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
-      <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
+      <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 45%;z-index: 1" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
+      <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 45%;z-index: 1" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
     </div>
 
     <div style="position: relative;" v-if="firstVisibility">
@@ -179,7 +179,7 @@
     <!--</div>-->
 
     <!--公众号 微博-->
-    <div style="position: relative;background: #fff;" v-if="firstVisibility">
+    <div style="position: relative;margin-top: -1px;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/home/home-10.jpg`" style="height: 226px;"/>
 
       <div style="position: absolute;bottom: 18%;left: 6%;width: 10%;height: 29%;" @click="onWeixinClick"></div>
@@ -370,7 +370,7 @@
         if (scrollTop < 3500 && scrollTop > 3000) {
           TweenMax.to(this.$refs['home-4-1'], 0.5, {
             x: '0',
-            ease: Back.easeInOut
+            ease: Back.easeOut
           })
         }
       })

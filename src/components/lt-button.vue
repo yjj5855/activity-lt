@@ -46,9 +46,19 @@
         TweenMax.to(this.$el, 0.05, {scaleX: 0.9, scaleY: 0.9, ease: Expo.linear})
       },
       animateButton () {
+        let self = this
         TweenMax.to(this.$el, duration, {scaleY: 1.6, ease: Expo.easeOut})
         TweenMax.to(this.$el, duration, {scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay})
-        TweenMax.to(this.$el, duration * 1.25, {scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3})
+        TweenMax.to(this.$el, duration * 1.25, {
+          scaleX: 1,
+          scaleY: 1,
+          ease: Back.easeOut,
+          easeParams: [6],
+          delay: delay * 3,
+          onComplete: function () {
+            self.$emit('click')
+          }
+        })
       }
     }
   }
