@@ -10,8 +10,6 @@
       </div>
     </div>
 
-    <!--关闭按钮-->
-    <x-icon type="ios-close-empty" size="60" style="position: fixed;right: 20px;top: 20px;background: #fff;border-radius: 10px;" @click.native="$router.replace({name: 'home', query: {type: 'back'}})"></x-icon>
   </div>
 </template>
 

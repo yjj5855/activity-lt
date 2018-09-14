@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.4.7",
     "fastclick": "^1.0.6",
     "gsap": "^2.0.2",
     "vue": "^2.5.2",

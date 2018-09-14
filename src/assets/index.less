@@ -53,6 +53,17 @@
       background-color: transparent;
     }
   }
+  &.videoPc {
+    .weui-dialog {
+      width: 90%;
+      max-width: 90%;
+      background-color: transparent;
+    }
+    #video-1 {
+      width: 100%;
+      z-index: 5001;
+    }
+  }
 }
 //@font-face {
 //  font-family: arialbd;
@@ -63,4 +74,18 @@
 }
 .success-img + .banner {
   visibility: visible;
+}
+
+//pc 样式
+.lt-timeline {
+  transition: all 0.5s ease;
+
+  &:hover{
+    transform: scale(1.2);
+  }
+}
+
+.app-pc {
+  background-image: url("./lt-bg.jpg");
+  background-repeat: repeat;
 }

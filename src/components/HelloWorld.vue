@@ -81,10 +81,10 @@
         <img class="lt-star2" src="static/home/home-3-star-3.png" style="animation-delay: .9s"/>
       </div>
 
-      <div style="position: absolute; top: 47%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
-      <div style="position: absolute; top: 47%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
-      <div style="position: absolute; top: 47%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
-      <div style="position: absolute; top: 47%;left: 70%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
+      <div style="position: absolute; top: 45%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
+      <div style="position: absolute; top: 45%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
+      <div style="position: absolute; top: 45%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
+      <div style="position: absolute; top: 45%;left: 70%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
 
       <!--3个视频-->
       <swiper auto :duration="600" :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
