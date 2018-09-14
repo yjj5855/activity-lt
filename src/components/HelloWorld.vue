@@ -81,10 +81,10 @@
         <img class="lt-star2" src="static/home/home-3-star-3.png" style="animation-delay: .9s"/>
       </div>
 
-      <div style="position: absolute; top: 44%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
-      <div style="position: absolute; top: 44%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
-      <div style="position: absolute; top: 44%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
-      <div style="position: absolute; top: 44%;left: 70%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
+      <div style="position: absolute; top: 47%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
+      <div style="position: absolute; top: 47%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
+      <div style="position: absolute; top: 47%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
+      <div style="position: absolute; top: 47%;left: 70%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
 
       <!--3个视频-->
       <swiper auto :duration="600" :aspect-ratio="1/1" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
@@ -108,11 +108,10 @@
       </div>
       <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
 
-      <div style="position: absolute;left: 0;bottom: 11%;right: 0;overflow: hidden;">
-        <img src="static/home/home-4-jiantou-2.png" style="transition: all 0.5s ease-in;transform: translate3d(-400px,0,0)"/>
-      </div>
-      <div style="position:absolute;bottom: 4%;left: 0%;right: 0;">
-        <lt-button id="home-4-goumai" src="static/home/btn-shangdian.png"  @click.native="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 4%;transition: all 0.5s ease-in;transform: translate3d(-400px,0,0)">
+      <div ref="home-4-1" style="position: absolute;left: -400px;bottom: 5%;right: 0;overflow: hidden;width: 400px;">
+        <img src="static/home/home-4-jiantou-2.png"/>
+        <br>
+        <lt-button id="home-4-goumai" src="static/home/btn-shangdian.png"  @click.native="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 4%;">
           前往旗舰店购买
         </lt-button>
       </div>
@@ -180,11 +179,11 @@
     <!--</div>-->
 
     <!--公众号 微博-->
-    <div style="position: relative;background: #fff;padding-top: 10%;" v-if="firstVisibility">
-      <img class="ximg-demo" :src="`static/home/home-10.png`" style="height: 304px;"/>
+    <div style="position: relative;background: #fff;" v-if="firstVisibility">
+      <img class="ximg-demo" :src="`static/home/home-10.jpg`" style="height: 226px;"/>
 
-      <div style="position: absolute;bottom: 23%;left: 10%;width: 17%;height: 30%;" @click="onWeixinClick"></div>
-      <div style="position: absolute;bottom: 23%;left: 32%;width: 17%;height: 30%;" @click="onWeiboClick"></div>
+      <div style="position: absolute;bottom: 18%;left: 6%;width: 10%;height: 29%;" @click="onWeixinClick"></div>
+      <div style="position: absolute;bottom: 18%;left: 16%;width: 10%;height: 29%;" @click="onWeiboClick"></div>
     </div>
 
     <!--视频-->
@@ -227,6 +226,8 @@
 <script>
   import $ from 'jquery'
   import {TransferDom, XImg, XHeader, Swiper, SwiperItem, Popup, Flexbox, FlexboxItem, Clocker, XDialog} from 'vux'
+  import TweenMax from 'gsap/TweenMax'
+  import {Back} from 'gsap/EasePack'
 
   let isAndroid = 0
   let browser = {
@@ -345,7 +346,7 @@
       let displayHeight = 600
       let heightList = [4800, 5200, 5600, 6000, 6400]
       let optFlag = [false, false, false, false, false]
-      $(window).on('scroll', function (e) {
+      $(window).on('scroll', (e) => {
         let scrollTop = $(window).scrollTop()
         console.log(scrollTop)
         for (let i = 0; i < heightList.length; i++) {
@@ -360,21 +361,17 @@
             }
           }
         }
-        if (scrollTop > 3400) {
-          $(`[src="static/home/home-4-jiantou-2.png"]`).css({
-            transform: 'translate3d(0,0,0)'
+        if (scrollTop > 3500 && scrollTop < 4000) {
+          TweenMax.to(this.$refs['home-4-1'], 0.5, {
+            x: '400px',
+            ease: Back.easeInOut
           })
-          $(`#home-4-goumai`).css({
-            transform: 'translate3d(0,0,0)'
+        }
+        if (scrollTop < 3500 && scrollTop > 3000) {
+          TweenMax.to(this.$refs['home-4-1'], 0.5, {
+            x: '0',
+            ease: Back.easeInOut
           })
-          setTimeout(() => {
-            $(`[src="static/home/home-4-jiantou-2.png"]`).css({
-              transform: 'unset'
-            })
-            $(`#home-4-goumai`).css({
-              transition: 'unset'
-            })
-          }, 500)
         }
       })
     },
