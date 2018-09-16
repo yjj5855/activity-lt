@@ -1,5 +1,5 @@
 <template>
-  <div class="pc-home" style="max-width: 1200px;margin: 0 auto;">
+  <div class="pc-home">
     <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;">
       <img class="ximg-demo" :src="`static/pchome/topbar.png`"/>
       <div style="position: absolute; left: 15%;top: 0;width: 11%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
@@ -29,38 +29,21 @@
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img :src="item" style="width: 100%;" @click="onBannerClick(index)"/>
         </swiper-item>
-        <!--<img src="static/pchome/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex&#45;&#45; : ''">-->
-        <!--<img src="static/pchome/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">-->
       </swiper>
 
-      <!--<div style="position: absolute;left: 0;top: 10%;z-index: 0;">-->
-        <!--<img class="lt-yueliang" src="static/pchome/home-1-yueliang.png" style="animation-delay: .5s;opacity: 0;"/>-->
-      <!--</div>-->
-      <!--<div style="position: absolute;left: 0;top: 16%;overflow-x: hidden;right: 0;z-index: 0;">-->
-        <!--<img class="lt-che1" src="static/pchome/home-1-che.png" style="animation-delay: .5s;opacity: 0;"/>-->
-      <!--</div>-->
-      <!--<div style="position: absolute;left: 0;top: 73%;z-index: 0;">-->
-        <!--<img class="lt-star2" src="static/pchome/home-1-star.png"/>-->
-      <!--</div>-->
+      <div style="position: absolute;left: 15%;top: 10%;z-index: 0;">
+        <img class="lt-yueliang" src="static/pchome/home-1-yueliang.png" style="width: 5vw;animation-delay: .5s;opacity: 0;"/>
+      </div>
+      <div style="position: absolute;left: 4%;top: 82%;z-index: 0;">
+        <img class="lt-yueliang" src="static/pchome/home-1-yazi.png" style="width: 10vw;animation-delay: .5s;opacity: 0;"/>
+      </div>
+      <div style="position: absolute;left: 0;top: 8%;z-index: 0;">
+        <img class="lt-star2" src="static/pchome/home-1-star-1.png" style="width: 100%;"/>
+      </div>
+      <div style="position: absolute;left: 28%;top: 79%;z-index: 0;">
+        <img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 3vw;"/>
+      </div>
     </div>
-
-    <!--倒计时-->
-    <!--<div style="position: relative;" v-if="$route.query.showClock">-->
-      <!--<img class="ximg-demo" :src="`static/pchome/home-2.jpg`"/>-->
-
-      <!--<div style="position: absolute;left: 0;right: 0;top: -8%;">-->
-        <!--<x-img src="static/pchome/daojishi.png" width="100%"/>-->
-        <!--<clocker time="2018-10-01" style="position: absolute;display: block;top: 29%;left: 0;right: 0;font-size: 50px;">-->
-          <!--<div style="position: relative;width: 100%;color: #fff;">-->
-            <!--<span style="position: absolute;left: 8%;">%D</span>-->
-            <!--<span style="position: absolute;left: 40%;">%H</span>-->
-            <!--<span style="position: absolute;left: 70%;">%M</span>-->
-            <!--&nbsp;-->
-          <!--</div>-->
-        <!--</clocker>-->
-      <!--</div>-->
-      <!--<div style="position: absolute; left: 0;bottom: 17%;width: 100%;height: 42%;" @click="playVideo('zbyrsp.mp4')"></div>-->
-    <!--</div>-->
 
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-2.jpg`"/>
@@ -70,27 +53,17 @@
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-3.jpg`"/>
 
-      <!--<div style="position: absolute;left: 0;top: 10%;z-index: 0;">-->
-        <!--<img class="lt-star2" src="static/pchome/home-3-star-1.png" style="animation-delay: .3s"/>-->
-      <!--</div>-->
-      <!--<div style="position: absolute;left: 0;top: 30%;z-index: 0;">-->
-        <!--<img class="lt-star2" src="static/pchome/home-3-star-2.png" style="animation-delay: .6s"/>-->
-      <!--</div>-->
-      <!--<div style="position: absolute;left: 0;top: 57%;z-index: 0;">-->
-        <!--<img class="lt-star2" src="static/pchome/home-3-star-3.png" style="animation-delay: .9s"/>-->
-      <!--</div>-->
-
-      <!--<div style="position: absolute; top: 47%;left: 13%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>-->
-      <!--<div style="position: absolute; top: 47%;left: 32%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>-->
-      <!--<div style="position: absolute; top: 47%;left: 51%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>-->
-      <!--<div style="position: absolute; top: 47%;left: 70%;width: 17%;height: 12%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>-->
+      <div style="position: absolute; top: 14%;left: 27%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
+      <div style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
+      <div style="position: absolute; top: 14%;left: 51%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
+      <div style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
 
       <!--3个视频-->
-      <swiper auto :duration="600" :aspect-ratio="966/1921" v-model="videoIndex" style="position: absolute;left: 0;right: 0;bottom: 0;" :show-dots="false">
+      <swiper auto :duration="600" :aspect-ratio="966/1921" v-model="videoIndex" style="position: absolute;left: 0;right: 0;top: 38%;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
           <img :src="item" style="width: 90%;"/>
-          <div style="position: absolute;left: 0;right: 0;bottom: 34%;text-align: center;">
-            <img src="static/pchome/bofang.png" style="width: 90%;" />
+          <div style="margin-top: -25%">
+            <img src="static/pchome/bofang.png" style="width: 100%;" />
           </div>
         </swiper-item>
       </swiper>
@@ -106,19 +79,22 @@
         <img class="lt-jiantou1" src="static/pchome/home-4-jiantou.png" style="overflow-x: hidden;"/>
       </div>
       <!--<div style="position: absolute; left: 0;bottom: 20%;width: 100%;height: 31%;" @click="playVideo('hxsp.mp4')"></div>-->
-
-      <div ref="home-4-1" style="position: absolute;left: -400px;bottom: 0;padding-bottom:5%;overflow: hidden;width: 400px;">
-        <img src="static/pchome/home-4-jiantou-2.png"/>
-        <br>
-        <lt-button id="home-4-goumai" src="static/pchome/btn-shangdian.png"  @click="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 4%;">
-          前往旗舰店购买
-        </lt-button>
+      <div style="position: absolute;right: 5%;top: 90%;z-index: 0;">
+        <img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 4vw;"/>
       </div>
+
     </div>
 
     <!--宝宝banner-->
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-5.jpg`"/>
+      <div ref="home-4-1" style="position: absolute;top: 0;left: 13%;width: 50%;">
+        <img src="static/pchome/home-4-jiantou-2.png" width="50%"/>
+        <br>
+        <lt-button id="home-4-goumai" src="static/pchome/btn-shangdian.png"  @click="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 31%;">
+          前往旗舰店购买
+        </lt-button>
+      </div>
       <!--<x-img src="static/pchome/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
       <swiper auto :duration="600" :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 30%;top: 26%;right: 30%;" :show-dots="false">
         <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
@@ -127,6 +103,10 @@
       </swiper>
       <img src="static/pchome/icon-l.png" style="width: 3%;position: absolute;left: 25%;top: 59%;z-index: 1" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
       <img src="static/pchome/icon-r.png" style="width: 3%;position: absolute;right: 25%;top: 59%;z-index: 1" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
+
+      <div style="position: absolute;right: 17%;top: 92%;z-index: 0;">
+        <img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 6vw;"/>
+      </div>
     </div>
 
     <div style="position: relative;" v-if="firstVisibility">
@@ -182,8 +162,8 @@
     <div style="position: relative;margin-top: -1px;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-7.jpg`"/>
 
-      <div style="position: absolute;bottom: 18%;left: 6%;width: 10%;height: 29%;" @click="onWeixinClick"></div>
-      <div style="position: absolute;bottom: 18%;left: 16%;width: 10%;height: 29%;" @click="onWeiboClick"></div>
+      <div style="position: absolute;top: 60%;left: 6%;width: 3%;height: 16%;" @click="onWeixinClick"></div>
+      <div style="position: absolute;top: 60%;left: 10%;width: 3%;height: 16%;" @click="onWeiboClick"></div>
     </div>
 
     <!--视频-->
@@ -211,7 +191,7 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showQrCode" hide-on-blur>
-        <img src="static/pchome/wxqrcode.jpg" style="width: 300px;"/>
+        <img src="static/home/wxqrcode.jpg" style="width: 300px;"/>
       </x-dialog>
     </div>
 
@@ -245,7 +225,7 @@
       TransferDom
     },
     components: {
-      'lt-button': require('../components/lt-button').default,
+      'lt-button': require('../components/lt-button-pc').default,
       banner1: require('./banner1-pc').default,
       banner2: require('./banner2').default,
       banner3: require('./banner3').default,
@@ -343,7 +323,7 @@
       onBannerClick (index) {
         this.scrollTopPx = $(window).scrollTop()
         $('#app').css({
-          height: '1px',
+          height: '100vh',
           'overflow-y': 'hidden'
         })
         if (index === 3) {
@@ -388,13 +368,7 @@
         $(window).scrollTop(0)
       },
       goYiyuan () {
-        if (window.is_wx()) {
-          let a = new window.ClipboardJS('.yiyuan')
-          console.log(a)
-          this.$vux.toast.text(`<span style="font-size: 30px;">链接已复制，请在其他浏览器中打开</span>`)
-        } else {
-          window.location.href = this.yiyuanUrl
-        }
+        window.location.href = this.yiyuanUrl
       },
       goUrl (url, isTaobaoLink = false) {
         window.location.href = url
