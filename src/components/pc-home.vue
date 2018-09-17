@@ -5,7 +5,7 @@
       <div style="position: absolute; left: 15%;top: 0;width: 11%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
       <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;left: 15%;top: 100%;padding: 2% 1% 2% 2%;width: 17%;">
-        <flexbox style="margin: 5px 0;" @click.native="onBannerClick(0)">
+        <flexbox class="c-p" style="margin: 5px 0;" @click.native="onBannerClick(0)">
           <flexbox-item style="font-size: 16px;">新款小老虎</flexbox-item>
           <x-icon type="ios-arrow-right" size="20"></x-icon>
         </flexbox>
@@ -27,7 +27,7 @@
       <x-img class="ximg-demo" :src="`static/pchome/home-1.jpg`" success-class="success-img"/>
       <swiper :duration="600" class="banner" :aspect-ratio="885/1921" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;z-index: 1;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;" @click="onBannerClick(index)"/>
+          <img class="c-p" :src="item" style="width: 100%;" @click="onBannerClick(index)"/>
         </swiper-item>
       </swiper>
 
@@ -53,17 +53,17 @@
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-3.jpg`"/>
 
-      <div style="position: absolute; top: 14%;left: 27%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/WX0zcKEY', true)"></div>
-      <div style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
-      <div style="position: absolute; top: 14%;left: 51%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
-      <div style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 27%;width: 10%;height: 16%;" @click="goUrl('https://ego.tmall.com')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 51%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
 
       <!--3个视频-->
       <swiper auto :duration="600" :aspect-ratio="966/1921" v-model="videoIndex" style="position: absolute;left: 0;right: 0;top: 38%;" :show-dots="false">
         <swiper-item v-for="(item, index) in videoList" :key="index" style="text-align: center;" @click.native="playVideo(videos[index])">
-          <img :src="item" style="width: 90%;"/>
+          <img :src="item" class="c-p" style="width: 90%;"/>
           <div style="margin-top: -25%">
-            <img src="static/pchome/bofang.png" style="width: 100%;" />
+            <img class="c-p" src="static/pchome/bofang.png" style="width: 100%;" />
           </div>
         </swiper-item>
       </swiper>
@@ -91,7 +91,7 @@
       <div ref="home-4-1" style="position: absolute;top: 0;left: 13%;width: 50%;">
         <img src="static/pchome/home-4-jiantou-2.png" width="50%"/>
         <br>
-        <lt-button id="home-4-goumai" src="static/pchome/btn-shangdian.png"  @click="goUrl('http://dwz.cn/WX0zcKEY')" style="margin-left: 31%;">
+        <lt-button id="home-4-goumai" src="static/pchome/btn-shangdian.png"  @click="goUrl('https://ego.tmall.com')" style="margin-left: 31%;">
           前往旗舰店购买
         </lt-button>
       </div>
@@ -101,8 +101,8 @@
           <img :src="item" style="width: 100%;"/>
         </swiper-item>
       </swiper>
-      <img src="static/pchome/icon-l.png" style="width: 3%;position: absolute;left: 25%;top: 59%;z-index: 1" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
-      <img src="static/pchome/icon-r.png" style="width: 3%;position: absolute;right: 25%;top: 59%;z-index: 1" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
+      <img class="c-p" src="static/pchome/icon-l.png" style="width: 3%;position: absolute;left: 25%;top: 59%;z-index: 1" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
+      <img class="c-p" src="static/pchome/icon-r.png" style="width: 3%;position: absolute;right: 25%;top: 59%;z-index: 1" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
 
       <div style="position: absolute;right: 17%;top: 92%;z-index: 0;">
         <img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 6vw;"/>
@@ -162,8 +162,8 @@
     <div style="position: relative;margin-top: -1px;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-7.jpg`"/>
 
-      <div style="position: absolute;top: 60%;left: 6%;width: 3%;height: 16%;" @click="onWeixinClick"></div>
-      <div style="position: absolute;top: 60%;left: 10%;width: 3%;height: 16%;" @click="onWeiboClick"></div>
+      <div class="c-p" style="position: absolute;top: 60%;left: 6%;width: 3%;height: 16%;" @click="onWeixinClick"></div>
+      <div class="c-p" style="position: absolute;top: 60%;left: 10%;width: 3%;height: 16%;" @click="onWeiboClick"></div>
     </div>
 
     <!--视频-->

@@ -1,25 +1,26 @@
 <template>
-  <div>
-    <img class="ximg-demo" src="static/b1/b1-1.jpg"/>
-    <img class="ximg-demo" src="static/b1/b1-2.jpg" :offset="200"/>
+  <scroller lock-x scrollbar-y ref="scroller">
+    <div>
+      <img class="ximg-demo" src="static/b1/b1-1.jpg"/>
+      <img class="ximg-demo" src="static/b1/b1-2.jpg" :offset="200"/>
 
-    <div style="position: relative;" >
-      <img class="ximg-demo" src="static/b1/b1-3.jpg" :offset="200"/>
-      <div style="position: absolute;left: 0;right: 0;text-align: center;top: 61%;">
-        <img src="static/btn-goumai.png" class="img-btn btn-img" style="width: 45%;" @click="onBtnClick" :data-clipboard-text="url">
+      <div style="position: relative;" >
+        <img class="ximg-demo" src="static/b1/b1-3.jpg" :offset="200"/>
+        <div style="position: absolute;left: 0;right: 0;text-align: center;top: 61%;">
+          <img src="static/btn-goumai.png" class="img-btn btn-img" style="width: 45%;" @click="onBtnClick" :data-clipboard-text="url">
+        </div>
       </div>
     </div>
-
-  </div>
+  </scroller>
 </template>
 
 
 <script>
   import $ from 'jquery'
-  import {XImg} from 'vux'
+  import {XImg, Scroller} from 'vux'
   export default {
     components: {
-      XImg
+      XImg, Scroller
     },
     data () {
       return {
@@ -33,6 +34,10 @@
         })
         $('.btn-img').on('touchend', function () {
           $(this).css({transform: 'scale(1)'})
+        })
+
+        this.$nextTick(() => {
+          this.$refs.scroller.reset({top: 0})
         })
       }, 300)
     },
