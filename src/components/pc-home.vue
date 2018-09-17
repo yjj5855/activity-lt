@@ -368,10 +368,10 @@
         $(window).scrollTop(0)
       },
       goYiyuan () {
-        window.location.href = this.yiyuanUrl
+        window.open(this.yiyuanUrl)
       },
       goUrl (url, isTaobaoLink = false) {
-        window.location.href = url
+        window.open(url)
       },
       onBannerShow () {
         this.$nextTick(() => {
@@ -389,7 +389,7 @@
         this.showQrCode = true
       },
       onWeiboClick () {
-        window.location.href = 'https://weibo.com/6087233450/profile?rightmod=1&wvr=6&mod=personinfo'
+        window.open('https://weibo.com/6087233450/profile?rightmod=1&wvr=6&mod=personinfo')
       }
     }
   }

@@ -40,7 +40,7 @@
     },
     methods: {
       onBtnClick () {
-        window.location.href = this.url
+        window.open(this.url)
       }
     }
   }
