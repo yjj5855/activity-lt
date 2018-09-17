@@ -1,6 +1,6 @@
 <template>
   <scroller lock-x scrollbar-y ref="scroller">
-    <div>
+    <div style="min-height: 101%;">
       <img class="ximg-demo" src="static/b1/b1-1.jpg"/>
       <img class="ximg-demo" src="static/b1/b1-2.jpg" :offset="200"/>
 
@@ -35,11 +35,18 @@
         $('.btn-img').on('touchend', function () {
           $(this).css({transform: 'scale(1)'})
         })
-
-        this.$nextTick(() => {
-          this.$refs.scroller.reset({top: 0})
-        })
       }, 300)
+
+      setTimeout(() => {
+        this.$nextTick(() => {
+          this.$refs.scroller.reset()
+        })
+      }, 1000)
+      setTimeout(() => {
+        this.$nextTick(() => {
+          this.$refs.scroller.reset()
+        })
+      }, 2000)
     },
     methods: {
       onBtnClick () {

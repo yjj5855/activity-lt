@@ -54,9 +54,9 @@
       <img class="ximg-demo" :src="`static/pchome/home-3.jpg`"/>
 
       <div class="c-p" style="position: absolute; top: 14%;left: 27%;width: 10%;height: 16%;" @click="goUrl('https://ego.tmall.com')"></div>
-      <div class="c-p" style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/tD34kGqn')"></div>
-      <div class="c-p" style="position: absolute; top: 14%;left: 51%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/DUPWzzWK')"></div>
-      <div class="c-p" style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('http://dwz.cn/oikNHrLK')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('https://search.kaola.com/brand.html?brandId=1242&shareOs=iOS&datid=__da_230bb323_5691a97408c33c80&hcAntiCheatSwitch=0&anstipamActiCheatSwitch=1&anstipamActiCheatToken=de3223456456fa2e3324354u4567lt&anstipamActiCheatValidate=anstipam_acti_default_validate')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 51%;width: 10%;height: 16%;" @click="goUrl('https://www.xiaohongshu.com/vendor/59cdbfb4eb90b97b1d2c6af6?xhsshare=CopyLink&appuid=5afc08614eacab6932caf471&apptime=1536745811')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('https://m.vip.com/recommend-brand-10025052.html?msns=iphone-6.26.5-link&st=br-url&cid=d8a559a840427d2a8a0f1bec94da0f4538299d27&chl_param=share%3AD5tUTAdbng&abtid=4f806ee63a5c975897a28dc14510ed0b&uid=')"></div>
 
       <!--3个视频-->
       <swiper auto :duration="600" :aspect-ratio="966/1921" v-model="videoIndex" style="position: absolute;left: 0;right: 0;top: 38%;" :show-dots="false">
