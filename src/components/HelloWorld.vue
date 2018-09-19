@@ -185,6 +185,10 @@
 
         <div style="position: absolute;bottom: 18%;left: 6%;width: 10%;height: 29%;" @click="onWeixinClick"></div>
         <div style="position: absolute;bottom: 18%;left: 16%;width: 10%;height: 29%;" @click="onWeiboClick"></div>
+
+        <div style="position: absolute;bottom: 22%;right: 8%;" @click="goUrl('http://www.miitbeian.gov.cn')">
+          沪ICP备18035411号
+        </div>
       </div>
     </div>
 

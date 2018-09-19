@@ -164,6 +164,10 @@
 
       <div class="c-p" style="position: absolute;top: 60%;left: 6%;width: 3%;height: 16%;" @click="onWeixinClick"></div>
       <div class="c-p" style="position: absolute;top: 60%;left: 10%;width: 3%;height: 16%;" @click="onWeiboClick"></div>
+
+      <div class="c-p" style="position: absolute;bottom: 11%;left: 6%;font-size: 12px;" @click="goUrl('http://www.miitbeian.gov.cn')">
+        沪ICP备18035411号
+      </div>
     </div>
 
     <!--视频-->
