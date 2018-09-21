@@ -1,29 +1,14 @@
 <template>
   <div class="pc-home">
-    <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;">
-      <img class="ximg-demo" :src="`static/pchome/topbar.png`"/>
-      <div style="position: absolute; left: 15%;top: 0;width: 11%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
-
-      <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;left: 15%;top: 100%;padding: 2% 1% 2% 2%;width: 17%;">
-        <flexbox class="c-p" style="margin: 5px 0;" @click.native="onBannerClick(0)">
-          <flexbox-item style="font-size: 16px;">新款小老虎</flexbox-item>
-          <x-icon type="ios-arrow-right" size="20"></x-icon>
-        </flexbox>
-        <!--<br>-->
-        <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">-->
-          <!--<flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>-->
-          <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
-        <!--</flexbox>-->
-        <!--<br>-->
-        <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">-->
-          <!--<flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>-->
-          <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
-        <!--</flexbox>-->
+    <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;height: 80px;background: #fff;">
+      <img class="ximg-demo" :src="`static/pchome/topbar.png`" style="height: 80px;width: 80px;margin: 0 auto;"/>
+      <div class="c-p" style="position: absolute; left: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick(0)">
+        新款小老虎
       </div>
     </div>
 
     <!--banner-->
-    <div style="position: relative;overflow: hidden;margin-top: 8%;" :style="bannerStyle">
+    <div style="position: relative;overflow: hidden;margin-top: 80px;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/pchome/home-1.jpg`" success-class="success-img"/>
       <swiper :duration="600" class="banner" :aspect-ratio="885/1921" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;z-index: 1;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
@@ -325,19 +310,19 @@
     },
     methods: {
       onBannerClick (index) {
-        this.scrollTopPx = $(window).scrollTop()
-        $('#app').css({
-          height: '100vh',
-          'overflow-y': 'hidden'
-        })
+        // this.scrollTopPx = $(window).scrollTop()
+        // $('#app').css({
+        //   height: '100vh',
+        //   'overflow-y': 'hidden'
+        // })
         if (index === 3) {
 
         } else if (index === 0) {
-          // this.$router.replace({name: 'banner1'})
-          this.banner = 'banner1'
-          this.$nextTick(() => {
-            this.bannerPopupStatus = true
-          })
+          // this.banner = 'banner1'
+          // this.$nextTick(() => {
+          //   this.bannerPopupStatus = true
+          // })
+          window.open(window.location.href.replace(window.location.hash, '') + '#/banner1')
         } else if (index === 1) {
           this.banner = 'banner3'
           this.$nextTick(() => {
