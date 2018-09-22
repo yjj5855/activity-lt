@@ -1,5 +1,5 @@
 <template>
-  <div class="pc-home">
+  <div class="pc-home" style="min-width: 1200px;">
     <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;height: 80px;background: #fff;">
       <img class="ximg-demo" :src="`static/pchome/topbar.png`" style="height: 80px;width: 80px;margin: 0 auto;"/>
       <div class="c-p" style="position: absolute; left: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick(0)">
@@ -12,7 +12,7 @@
       <x-img class="ximg-demo" :src="`static/pchome/home-1.jpg`" success-class="success-img"/>
       <swiper :duration="600" class="banner" :aspect-ratio="885/1921" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;z-index: 1;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img class="c-p" :src="item" style="width: 100%;" @click="onBannerClick(index)"/>
+          <img class="c-p" :src="item" style="width: 1200px;" @click="onBannerClick(index)"/>
         </swiper-item>
       </swiper>
 
@@ -39,9 +39,9 @@
       <img class="ximg-demo" :src="`static/pchome/home-3.jpg`"/>
 
       <div class="c-p" style="position: absolute; top: 14%;left: 27%;width: 10%;height: 16%;" @click="goUrl('https://ego.tmall.com')"></div>
-      <div class="c-p" style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('https://search.kaola.com/brand.html?brandId=1242&shareOs=iOS&datid=__da_230bb323_5691a97408c33c80&hcAntiCheatSwitch=0&anstipamActiCheatSwitch=1&anstipamActiCheatToken=de3223456456fa2e3324354u4567lt&anstipamActiCheatValidate=anstipam_acti_default_validate')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 39%;width: 10%;height: 16%;" @click="goUrl('https://www.kaola.com/brand/1242.html')"></div>
       <div class="c-p" style="position: absolute; top: 14%;left: 51%;width: 10%;height: 16%;" @click="goUrl('https://www.xiaohongshu.com/vendor/59cdbfb4eb90b97b1d2c6af6?xhsshare=CopyLink&appuid=5afc08614eacab6932caf471&apptime=1536745811')"></div>
-      <div class="c-p" style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('https://m.vip.com/recommend-brand-10025052.html?msns=iphone-6.26.5-link&st=br-url&cid=d8a559a840427d2a8a0f1bec94da0f4538299d27&chl_param=share%3AD5tUTAdbng&abtid=4f806ee63a5c975897a28dc14510ed0b&uid=')"></div>
+      <div class="c-p" style="position: absolute; top: 14%;left: 63%;width: 10%;height: 16%;" @click="goUrl('https://category.vip.com/suggest.php?keyword=QV&brand_sn=10025052')"></div>
 
       <!--3个视频-->
       <swiper auto :duration="600" :aspect-ratio="966/1921" v-model="videoIndex" style="position: absolute;left: 0;right: 0;top: 38%;" :show-dots="false">
@@ -76,22 +76,14 @@
       <div ref="home-4-1" style="position: absolute;top: 0;left: 13%;width: 50%;">
         <img src="static/pchome/home-4-jiantou-2.png" width="50%"/>
         <br>
-        <lt-button id="home-4-goumai" src="static/pchome/btn-shangdian.png"  @click="goUrl('https://ego.tmall.com')" style="margin-left: 31%;">
+        <lt-button id="home-4-goumai" src="static/pchome/btn-shangdian.png"  @click="goUrl('https://ego.tmall.hk')" style="margin-left: 31%;">
           前往旗舰店购买
         </lt-button>
       </div>
-      <!--<x-img src="static/pchome/btn-tiwen.png" style="width: 24%;position:absolute;top: 33%;right: 15%;"/>-->
-      <swiper auto :duration="600" :aspect-ratio="1275/750" v-model="baobaoIndex" style="position: absolute;left: 30%;top: 26%;right: 30%;" :show-dots="false">
-        <swiper-item class="swiper-demo-img" v-for="(item, index) in baobaoList" :key="index" style="text-align: center;">
-          <img :src="item" style="width: 100%;"/>
-        </swiper-item>
-      </swiper>
-      <img class="c-p" src="static/pchome/icon-l.png" style="width: 3%;position: absolute;left: 25%;top: 59%;z-index: 1" @click="baobaoIndex > 0 ? baobaoIndex-- : ''">
-      <img class="c-p" src="static/pchome/icon-r.png" style="width: 3%;position: absolute;right: 25%;top: 59%;z-index: 1" @click="baobaoIndex < 4 ? baobaoIndex++ : ''">
 
-      <div style="position: absolute;right: 17%;top: 92%;z-index: 0;">
-        <img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 6vw;"/>
-      </div>
+      <!--<div style="position: absolute;right: 17%;top: 92%;z-index: 0;">-->
+        <!--<img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 6vw;"/>-->
+      <!--</div>-->
     </div>
 
     <div style="position: relative;" v-if="firstVisibility">
