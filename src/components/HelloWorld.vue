@@ -10,11 +10,11 @@
             <flexbox-item style="font-size: 28px;">新款小老虎</flexbox-item>
             <x-icon type="ios-arrow-right" size="40"></x-icon>
           </flexbox>
-          <!--<br>-->
-          <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">-->
-          <!--<flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>-->
-          <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
-          <!--</flexbox>-->
+          <br>
+          <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
+            <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
+            <x-icon type="ios-arrow-right" size="40"></x-icon>
+          </flexbox>
           <!--<br>-->
           <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">-->
           <!--<flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>-->
@@ -28,12 +28,12 @@
         <x-img class="ximg-demo" :src="`static/home/home-1.jpg`" success-class="success-img" style="height: 1200px;"/>
         <swiper :duration="600" class="banner" :aspect-ratio="919/645" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;bottom: 0;z-index: 1;" :show-dots="false" auto>
           <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-            <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(index)"/>
-            <div style="position: absolute;left: 0;right: 0;bottom: 8%;text-align: center;" v-if="index < 3">
-              <lt-button src="static/home/btn-liaojie.png" @click.native="onBannerClick(index)">&emsp;了解更多&emsp;</lt-button>
+            <img :src="item" style="width: 100%;margin-top: -36%;" @click="onBannerClick(item)"/>
+            <div style="position: absolute;left: 0;right: 0;bottom: 8%;text-align: center;" v-if="item != 'static/home/banner-4.png'">
+              <lt-button src="static/home/btn-liaojie.png" @click.native="onBannerClick(item)">&emsp;了解更多&emsp;</lt-button>
             </div>
             <div style="position: absolute;left: 0;right: 0;bottom: 11%;text-align: center;" v-else>
-              <img class="btn-img" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(index)">
+              <img class="btn-img" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(item)">
             </div>
           </swiper-item>
           <!--<img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex&#45;&#45; : ''">-->
@@ -52,22 +52,22 @@
       </div>
 
       <!--倒计时-->
-      <!--<div style="position: relative;" v-if="$route.query.showClock">-->
-      <!--<img class="ximg-demo" :src="`static/home/home-2.jpg`"/>-->
+      <div style="position: relative;">
+        <img class="ximg-demo" :src="`static/home/home-2.jpg`"/>
 
-      <!--<div style="position: absolute;left: 0;right: 0;top: -8%;">-->
-      <!--<x-img src="static/home/daojishi.png" width="100%"/>-->
-      <!--<clocker time="2018-10-01" style="position: absolute;display: block;top: 29%;left: 0;right: 0;font-size: 50px;">-->
-      <!--<div style="position: relative;width: 100%;color: #fff;">-->
-      <!--<span style="position: absolute;left: 8%;">%D</span>-->
-      <!--<span style="position: absolute;left: 40%;">%H</span>-->
-      <!--<span style="position: absolute;left: 70%;">%M</span>-->
-      <!--&nbsp;-->
-      <!--</div>-->
-      <!--</clocker>-->
-      <!--</div>-->
-      <!--<div style="position: absolute; left: 0;bottom: 17%;width: 100%;height: 42%;" @click="playVideo('zbyrsp.mp4')"></div>-->
-      <!--</div>-->
+        <div style="position: absolute;left: 0;right: 0;top: -8%;">
+          <x-img src="static/home/daojishi.png" width="100%"/>
+          <clocker time="2018-10-14 16:00" style="position: absolute;display: block;top: 29%;left: 0;right: 0;font-size: 96px;">
+            <div style="position: relative;width: 100%;color: #fff;">
+              <span style="position: absolute;left: 8%;">%D</span>
+              <span style="position: absolute;left: 40%;">%H</span>
+              <span style="position: absolute;left: 70%;">%M</span>
+              &nbsp;
+            </div>
+          </clocker>
+        </div>
+        <div style="position: absolute; left: 0;bottom: 17%;width: 100%;height: 42%;" @click="playVideo('zbyrsp.mp4')"></div>
+      </div>
 
       <!--4个商城-->
       <div style="position: relative;" v-if="firstVisibility">
@@ -206,9 +206,9 @@
     </div>
 
     <!--一元购-->
-    <!--<div style="position: fixed;left: 0;top: 10%;" v-if="firstVisibility" >-->
-      <!--<img src="static/home/yiyuan.png" class="yiyuan" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>-->
-    <!--</div>-->
+    <div style="position: fixed;left: 0;top: 10%;z-index: 2" v-if="firstVisibility" >
+      <img src="static/home/yiyuan.png" class="yiyuan" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
+    </div>
 
     <!--banner-popup-->
     <div v-transfer-dom>
@@ -274,10 +274,10 @@
 
         drawerVisibility: false,
         bannerList: [
-          'static/home/banner-1.png'
-          // 'static/home/banner-2.png'
+          'static/home/banner-1.png',
+          'static/home/banner-2.png',
           // 'static/home/banner-3.png',
-          // 'static/home/banner-4.png'
+          'static/home/banner-4.png'
         ],
         bannerIndex: 0,
 
@@ -320,8 +320,8 @@
       }
     },
     mounted () {
-      if (new Date('2018-10-08').getTime() - new Date().getTime() > 0) {
-        // this.bannerStyle.height = '146vw'
+      if (new Date('2018-10-14 16:00').getTime() - new Date().getTime() > 0) {
+
       }
 
       setTimeout(() => {
@@ -352,6 +352,7 @@
 
       let displayHeight = 600
       let heightList = [4800, 5200, 5600, 6000, 6400]
+      heightList = heightList.map(item => item + 900)
       let optFlag = [false, false, false, false, false]
       $(window).on('scroll', (e) => {
         let scrollTop = $(window).scrollTop()
@@ -368,13 +369,13 @@
             }
           }
         }
-        if (scrollTop > 3500 && scrollTop < 4000) {
+        if (scrollTop > 3500 + 900 && scrollTop < 4000 + 900) {
           TweenMax.to(this.$refs['home-4-1'], 0.5, {
             x: '400px',
             ease: Back.easeInOut
           })
         }
-        if (scrollTop < 3500 && scrollTop > 3000) {
+        if (scrollTop < 3500 + 900 && scrollTop > 3000 + 900) {
           TweenMax.to(this.$refs['home-4-1'], 0.5, {
             x: '0',
             ease: Back.easeOut
@@ -383,26 +384,26 @@
       })
     },
     methods: {
-      onBannerClick (index) {
+      onBannerClick (item) {
         this.scrollTopPx = $(window).scrollTop()
         $('.index-page').css({
           height: '1px',
           'overflow-y': 'hidden'
         })
-        if (index === 3) {
-
-        } else if (index === 0) {
+        if (item === 'static/home/banner-4.png') {
+          window.location.href = this.yiyuanUrl
+        } else if (item === 'static/home/banner-1.png') {
           // this.$router.replace({name: 'banner1'})
           this.banner = 'banner1'
           this.$nextTick(() => {
             this.bannerPopupStatus = true
           })
-        } else if (index === 1) {
+        } else if (item === 'static/home/banner-2.png') {
           this.banner = 'banner3'
           this.$nextTick(() => {
             this.bannerPopupStatus = true
           })
-        } else if (index === 2) {
+        } else if (item === 'static/home/banner-3.png') {
           this.banner = 'banner2'
           this.$nextTick(() => {
             this.bannerPopupStatus = true

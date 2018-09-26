@@ -1,9 +1,12 @@
 <template>
   <div class="pc-home" style="min-width: 1200px;">
-    <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;height: 80px;background: #fff;">
+    <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;height: 80px;background: #fff;min-width: 1200px;">
       <img class="ximg-demo" :src="`static/pchome/topbar.png`" style="height: 80px;width: 80px;margin: 0 auto;"/>
-      <div class="c-p" style="position: absolute; left: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick(0)">
+      <div class="c-p" style="position: absolute; left: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick('static/pchome/banner-1.png')">
         新款小老虎
+      </div>
+      <div class="c-p" style="position: absolute; right: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick('static/pchome/banner-2.png')">
+        BABY系列
       </div>
     </div>
 
@@ -12,7 +15,7 @@
       <x-img class="ximg-demo" :src="`static/pchome/home-1.jpg`" success-class="success-img"/>
       <swiper :duration="600" class="banner" :aspect-ratio="885/1921" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;z-index: 1;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
-          <img class="c-p" :src="item" style="width: 1200px;" @click="onBannerClick(index)"/>
+          <img class="c-p" :src="item" style="width: 1200px;" @click="onBannerClick(item)"/>
         </swiper-item>
       </swiper>
 
@@ -28,6 +31,24 @@
       <div style="position: absolute;left: 28%;top: 79%;z-index: 0;">
         <img class="lt-star2" src="static/pchome/home-5-star.png" style="width: 3vw;"/>
       </div>
+    </div>
+
+    <!--倒计时-->
+    <div style="position: relative;" v-if="firstVisibility">
+      <img class="ximg-demo" src="static/pchome/home-8.jpg"/>
+      <div style="position: absolute;left: 0;right: 0;top: 0%;">
+        <img src="static/pchome/home-8-1.png" style="width: 100%;"/>
+
+        <clocker time="2018-10-14 16:00" style="position: absolute;display: block;top: 27%;left: 30%;width: 40%;" :style="{'font-size': fontSize}">
+          <div style="position: relative;width: 100%;color: #fff;">
+            <span style="position: absolute;left: 8%;">%D</span>
+            <span style="position: absolute;left: 40%;">%H</span>
+            <span style="position: absolute;left: 70%;">%M</span>
+            &nbsp;
+          </div>
+        </clocker>
+      </div>
+      <div style="position: absolute;left: 24%;bottom: 8%;width: 52%;height: 53%;" @click="playVideo('zbyrsp.mp4')"></div>
     </div>
 
     <div style="position: relative;" v-if="firstVisibility">
@@ -73,6 +94,46 @@
     <!--宝宝banner-->
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-5.jpg`"/>
+      <div class="container" style="width: 90%!important;position: absolute;left: 0;right: 0;top: 36%;">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="carousel slide multi-item-carousel" id="theCarousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <div class="col-xs-4">
+                    <a href="#1"><img src="static/home/baobao-1.png" class="img-responsive"></a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="col-xs-4">
+                    <a href="#1"><img src="static/home/baobao-2.png" class="img-responsive"></a>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="col-xs-4">
+                    <a href="#1"><img src="static/home/baobao-3.png" class="img-responsive"></a></div>
+                </div>
+                <div class="item">
+                  <div class="col-xs-4">
+                    <a href="#1"><img src="static/home/baobao-4.png" class="img-responsive"></a></div>
+                </div>
+                <div class="item">
+                  <div class="col-xs-4">
+                    <a href="#1"><img src="static/home/baobao-5.png" class="img-responsive"></a></div>
+                </div>
+              </div>
+              <a class="left carousel-control" href="#theCarousel" data-slide="prev" style="background: transparent;left: -100px;">
+                <img class="glyphicon-chevron-left" src="static/pchome/icon-l.png" style="width: 67px;height: 107px;"/>
+              </a>
+              <a class="right carousel-control" href="#theCarousel" data-slide="next" style="background: transparent;right: -100px;">
+                <img class="glyphicon-chevron-right" src="static/pchome/icon-r.png" style="width: 67px;height: 107px;"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <div ref="home-4-1" style="position: absolute;top: 0;left: 13%;width: 50%;">
         <img src="static/pchome/home-4-jiantou-2.png" width="50%"/>
         <br>
@@ -145,6 +206,11 @@
       <div class="c-p" style="position: absolute;bottom: 11%;left: 6%;font-size: 12px;" @click="goUrl('http://www.miitbeian.gov.cn')">
         沪ICP备18035411号
       </div>
+    </div>
+
+    <!--一元购-->
+    <div style="position: fixed;left: 0;top: 80px;z-index: 2" v-if="firstVisibility" >
+      <img src="static/home/yiyuan.png" class="yiyuan c-p" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
     </div>
 
     <!--视频-->
@@ -222,12 +288,13 @@
     },
     data () {
       return {
+        fontSize: '40px',
         firstVisibility: false,
 
         drawerVisibility: false,
         bannerList: [
-          'static/pchome/banner-1.png'
-          // 'static/pchome/banner-2.png'
+          'static/pchome/banner-1.png',
+          'static/pchome/banner-2.png'
           // 'static/pchome/banner-3.png',
           // 'static/pchome/banner-4.png'
         ],
@@ -280,6 +347,7 @@
       }
     },
     mounted () {
+      this.fontSize = document.documentElement.clientWidth / 25 + 'px'
       if (new Date('2018-10-08').getTime() - new Date().getTime() > 0) {
         // this.bannerStyle.height = '146vw'
       }
@@ -299,36 +367,42 @@
       //     })
       //   }
       // })
+
+      setTimeout(() => {
+        $('.multi-item-carousel .item').each(function () {
+          console.log(123)
+          let next = $(this).next()
+          if (!next.length) {
+            next = $(this).siblings(':first')
+          }
+          next.children(':first-child').clone().appendTo($(this))
+
+          if (next.next().length > 0) {
+            next.next().children(':first-child').clone().appendTo($(this))
+          } else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this))
+          }
+          console.log(this)
+        })
+        $('.multi-item-carousel').carousel({
+          interval: false
+        })
+      }, 300)
     },
     methods: {
-      onBannerClick (index) {
-        // this.scrollTopPx = $(window).scrollTop()
-        // $('#app').css({
-        //   height: '100vh',
-        //   'overflow-y': 'hidden'
-        // })
-        if (index === 3) {
+      onBannerClick (item) {
+        if (item === 'static/pchome/banner-4.png') {
 
-        } else if (index === 0) {
-          // this.banner = 'banner1'
-          // this.$nextTick(() => {
-          //   this.bannerPopupStatus = true
-          // })
+        } else if (item === 'static/pchome/banner-1.png') {
           window.open(window.location.href.replace(window.location.hash, '') + '#/banner1')
-        } else if (index === 1) {
-          this.banner = 'banner3'
-          this.$nextTick(() => {
-            this.bannerPopupStatus = true
-          })
-        } else if (index === 2) {
-          this.banner = 'banner2'
-          this.$nextTick(() => {
-            this.bannerPopupStatus = true
-          })
+        } else if (item === 'static/pchome/banner-2.png') {
+          window.open(window.location.href.replace(window.location.hash, '') + '#/banner2')
+        } else if (item === 'static/pchome/banner-3.png') {
+          window.open(window.location.href.replace(window.location.hash, '') + '#/banner3')
         }
       },
       playVideo (mp4) {
-        this.videoSrc = `static/pchome/${mp4}`
+        this.videoSrc = `static/home/${mp4}`
         this.showVideoBox = true
         setTimeout(() => {
           $('#video-1')[0].currentTime = 0.5
@@ -394,10 +468,46 @@
   }
 </script>
 
-<style>
+<style lang="less">
   .ximg-demo {
     width: 100%;
     height: auto;
     display: block;
   }
+
+  .multi-item-carousel{
+     .carousel-inner{
+       > .item{
+         transition: 500ms ease-in-out left;
+       }
+       .active{
+         &.left{
+           left:-33%;
+         }
+         &.right{
+           left:33%;
+         }
+       }
+       .next{
+         left: 33%;
+       }
+       .prev{
+         left: -33%;
+       }
+       @media all and (transform-3d), (-webkit-transform-3d) {
+         > .item{
+           // use your favourite prefixer here
+           transition: 500ms ease-in-out left;
+           transition: 500ms ease-in-out all;
+           backface-visibility: visible;
+           transform: none!important;
+         }
+       }
+     }
+     .carouse-control{
+       &.left, &.right{
+         background-image: none;
+       }
+     }
+   }
 </style>
