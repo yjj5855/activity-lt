@@ -390,14 +390,16 @@
     },
     methods: {
       onBannerClick (item) {
+        if (item === 'static/home/banner-4.png') {
+          this.$vux.toast.text(`<span style="font-size: 30px;">还未开始</span>`)
+          return
+        }
         this.scrollTopPx = $(window).scrollTop()
         $('.index-page').css({
           height: '1px',
           'overflow-y': 'hidden'
         })
-        if (item === 'static/home/banner-4.png') {
-          this.$vux.toast.text(`<span style="font-size: 30px;">还未开始</span>`)
-        } else if (item === 'static/home/banner-1.png') {
+        if (item === 'static/home/banner-1.png') {
           this.banner = 'banner1'
           this.$nextTick(() => {
             this.bannerPopupStatus = true
