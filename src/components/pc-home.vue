@@ -1,23 +1,25 @@
 <template>
   <div class="pc-home" style="min-width: 1200px;">
-    <div style="position: fixed;width: 100%;top: 0;left: 0;z-index: 2;height: 80px;background: #fff;min-width: 1200px;">
-      <img class="ximg-demo" :src="`static/pchome/topbar.png`" style="height: 80px;width: 80px;margin: 0 auto;"/>
-      <div class="c-p" style="position: absolute; left: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick('static/pchome/banner-1.png')">
+    <div style="height: 80px;background: #fff;min-width: 1200px;">
+      <img class="ximg-demo" :src="`static/pchome/topbar.png`" style="height: 80px;width: 80px;position: absolute;left: 15%;"/>
+      <div class="c-p f-f" style="position: absolute; left: 20%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick('static/pchome/banner-1.png')">
         新款小老虎
       </div>
-      <div class="c-p" style="position: absolute; right: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick('static/pchome/banner-2.png')">
+      <div class="c-p f-f" style="position: absolute; left: 30%;top: 0;width: 11%;height: 100%;line-height: 80px;text-align: center;" @click="onBannerClick('static/pchome/banner-2.png')">
         BABY系列
       </div>
     </div>
 
     <!--banner-->
-    <div style="position: relative;overflow: hidden;margin-top: 80px;" :style="bannerStyle">
+    <div style="position: relative;overflow: hidden;" :style="bannerStyle">
       <x-img class="ximg-demo" :src="`static/pchome/home-1.jpg`" success-class="success-img"/>
       <swiper :duration="600" class="banner" :aspect-ratio="885/1921" v-model="bannerIndex" style="position: absolute;left: 0;top: 0;right: 0;z-index: 1;" :show-dots="false" auto>
         <swiper-item class="swiper-demo-img" v-for="(item, index) in bannerList" :key="index" style="text-align: center;">
           <img class="c-p" :src="item" style="width: 1200px;" @click="onBannerClick(item)"/>
         </swiper-item>
       </swiper>
+      <img class="c-p" src="static/home/icon-l.png" style="width: 40px;position: absolute;left: 2%;top: 40%;z-index: 1;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
+      <img class="c-p" src="static/home/icon-r.png" style="width: 40px;position: absolute;right: 2%;top: 40%;z-index: 1;" @click="bannerIndex < bannerList.length -1 ? bannerIndex++ : ''">
 
       <div style="position: absolute;left: 15%;top: 10%;z-index: 0;">
         <img class="lt-yueliang" src="static/pchome/home-1-yueliang.png" style="width: 5vw;animation-delay: .5s;opacity: 0;"/>
@@ -73,8 +75,8 @@
           </div>
         </swiper-item>
       </swiper>
-      <!--<img src="static/pchome/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex&#45;&#45; : ''">-->
-      <!--<img src="static/pchome/icon-r.png" style="width: 6%;position: absolute;right: 2%;bottom: 12%;" @click="videoIndex < 2 ? videoIndex++ : ''">-->
+      <img class="c-p" src="static/pchome/icon-l.png" style="width: 40px;position: absolute;left: 2%;bottom: 26%;" @click="videoIndex > 0 ? videoIndex-- : ''">
+      <img class="c-p" src="static/pchome/icon-r.png" style="width: 40px;position: absolute;right: 2%;bottom: 26%;" @click="videoIndex < videoIndex.length - 1 ? videoIndex++ : ''">
 
     </div>
 
@@ -94,7 +96,7 @@
     <!--宝宝banner-->
     <div style="position: relative;" v-if="firstVisibility">
       <img class="ximg-demo" :src="`static/pchome/home-5.jpg`"/>
-      <div class="container" style="width: 90%!important;position: absolute;left: 0;right: 0;top: 36%;">
+      <div class="container" style="width: 89%!important;position: absolute;left: 0;right: 0;top: 36%;">
         <div class="row">
           <div class="col-md-12">
             <div class="carousel slide multi-item-carousel" id="theCarousel">
@@ -293,16 +295,16 @@
 
         drawerVisibility: false,
         bannerList: [
+          'static/pchome/banner-2.png',
           'static/pchome/banner-1.png',
-          'static/pchome/banner-2.png'
           // 'static/pchome/banner-3.png',
-          // 'static/pchome/banner-4.png'
+          'static/pchome/banner-4.png'
         ],
         bannerIndex: 0,
 
         videoList: [
-          'static/pchome/video-kunao.png'
-          // 'static/pchome/video-xizao.png',
+          'static/pchome/video-kunao.png',
+          'static/pchome/video-xizao.png'
           // 'static/pchome/video-kunao.png'
         ],
         videos: [
@@ -331,7 +333,7 @@
         bannerPopupStatus: false,
         banner: '',
 
-        yiyuanUrl: 'https://h5.m.taobao.com/awp/core/detail.htm?id=576977040134',
+        yiyuanUrl: 'https://detail.tmall.hk/hk/item.htm?spm=a1z10.1-b-s.w5003-18916314323.2.3107154dcViaKF&id=578317094280&scene=taobao_shop',
 
         scrollTopPx: 0,
 
@@ -392,7 +394,7 @@
     methods: {
       onBannerClick (item) {
         if (item === 'static/pchome/banner-4.png') {
-
+          this.$vux.toast.text(`还未开始`)
         } else if (item === 'static/pchome/banner-1.png') {
           window.open(window.location.href.replace(window.location.hash, '') + '#/banner1')
         } else if (item === 'static/pchome/banner-2.png') {
@@ -510,4 +512,8 @@
        }
      }
    }
+
+  .f-f {
+    font-family: 'Arial','Microsoft YaHei','黑体','宋体','sans-serif';
+  }
 </style>

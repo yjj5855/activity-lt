@@ -5,20 +5,25 @@
         <img class="ximg-demo" :src="`static/home/topbar2.png`"/>
         <div style="position: absolute; left: 0;top: 0;width: 21%;height: 100%;" @click="drawerVisibility = !drawerVisibility"></div>
 
-        <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 1;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
-          <flexbox style="margin: 5px 0;" @click.native="onBannerClick(0)">
+        <div id="drawer" v-if="drawerVisibility" style="background: #fff;position: absolute;z-index: 3;top: 100%;padding: 40px 20px 40px 40px;width: 30%;">
+          <flexbox style="margin: 5px 0;" @click.native="onBannerClick('static/home/banner-1.png')">
             <flexbox-item style="font-size: 28px;">新款小老虎</flexbox-item>
             <x-icon type="ios-arrow-right" size="40"></x-icon>
           </flexbox>
           <br>
-          <flexbox style="margin: 5px 0;" @click.native="onBannerClick(1)">
+          <flexbox style="margin: 5px 0;" @click.native="onBannerClick('static/home/banner-2.png')">
             <flexbox-item style="font-size: 28px;">BABY系列</flexbox-item>
             <x-icon type="ios-arrow-right" size="40"></x-icon>
           </flexbox>
+          <br>
+          <flexbox style="margin: 5px 0;" @click.native="onBannerClick('static/home/banner-4.png')">
+            <flexbox-item style="font-size: 28px;">直播预告</flexbox-item>
+            <x-icon type="ios-arrow-right" size="40"></x-icon>
+          </flexbox>
           <!--<br>-->
-          <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick(2)">-->
-          <!--<flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>-->
-          <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
+          <!--<flexbox style="margin: 5px 0;" @click.native="onBannerClick('static/home/banner-3.png')">-->
+            <!--<flexbox-item style="font-size: 28px;">KIDS系列</flexbox-item>-->
+            <!--<x-icon type="ios-arrow-right" size="40"></x-icon>-->
           <!--</flexbox>-->
         </div>
       </div>
@@ -36,8 +41,8 @@
               <img class="btn-img" src="static/home/btn-shipin.png" style="width: 57%;" @click="onBannerClick(item)">
             </div>
           </swiper-item>
-          <!--<img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex&#45;&#45; : ''">-->
-          <!--<img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">-->
+          <img src="static/home/icon-l.png" style="width: 10%;position: absolute;left: 2%;top: 40%;" @click="bannerIndex > 0 ? bannerIndex-- : ''">
+          <img src="static/home/icon-r.png" style="width: 10%;position: absolute;right: 2%;top: 40%;" @click="bannerIndex < 3 ? bannerIndex++ : ''">
         </swiper>
 
         <div style="position: absolute;left: 0;top: 10%;z-index: 0;">
@@ -96,8 +101,8 @@
             </div>
           </swiper-item>
         </swiper>
-        <!--<img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex&#45;&#45; : ''">-->
-        <!--<img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;bottom: 12%;" @click="videoIndex < 2 ? videoIndex++ : ''">-->
+        <img src="static/home/icon-l.png" style="width: 6%;position: absolute;left: 2%;bottom: 12%;" @click="videoIndex > 0 ? videoIndex-- : ''">
+        <img src="static/home/icon-r.png" style="width: 6%;position: absolute;right: 2%;bottom: 12%;" @click="videoIndex < videoList.length -1 ? videoIndex++ : ''">
 
       </div>
 
@@ -206,7 +211,7 @@
     </div>
 
     <!--一元购-->
-    <div style="position: fixed;left: 0;top: 10%;z-index: 2" v-if="firstVisibility" >
+    <div style="position: fixed;left: 0;top: 10%;z-index: 1" v-if="firstVisibility" >
       <img src="static/home/yiyuan.png" class="yiyuan" style="width: 250px;" @click="goYiyuan" :data-clipboard-text="yiyuanUrl"/>
     </div>
 
@@ -274,16 +279,16 @@
 
         drawerVisibility: false,
         bannerList: [
-          'static/home/banner-1.png',
           'static/home/banner-2.png',
+          'static/home/banner-1.png',
           // 'static/home/banner-3.png',
           'static/home/banner-4.png'
         ],
         bannerIndex: 0,
 
         videoList: [
-          'static/home/video-kunao.png'
-          // 'static/home/video-xizao.png',
+          'static/home/video-kunao.png',
+          'static/home/video-xizao.png'
           // 'static/home/video-kunao.png'
         ],
         videos: [
@@ -312,7 +317,7 @@
         bannerPopupStatus: false,
         banner: '',
 
-        yiyuanUrl: 'https://h5.m.taobao.com/awp/core/detail.htm?id=576977040134',
+        yiyuanUrl: 'https://detail.tmall.hk/hk/item.htm?spm=a1z10.1-b-s.w5003-18916314323.2.3107154dcViaKF&id=578317094280&scene=taobao_shop',
 
         scrollTopPx: 0,
 
@@ -391,9 +396,8 @@
           'overflow-y': 'hidden'
         })
         if (item === 'static/home/banner-4.png') {
-          window.location.href = this.yiyuanUrl
+          this.$vux.toast.text(`<span style="font-size: 30px;">还未开始</span>`)
         } else if (item === 'static/home/banner-1.png') {
-          // this.$router.replace({name: 'banner1'})
           this.banner = 'banner1'
           this.$nextTick(() => {
             this.bannerPopupStatus = true
